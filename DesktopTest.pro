@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui serialport charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
@@ -26,12 +26,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    dialog.cpp
+    dialog.cpp \
+    calibrationo2.cpp
 
 HEADERS += \
         mainwindow.h \
-    dialog.h
+    dialog.h \
+    calibrationo2.h
 
 FORMS += \
         mainwindow.ui \
-    dialog.ui
+    dialog.ui \
+    calibrationo2.ui

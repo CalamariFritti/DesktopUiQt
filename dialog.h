@@ -17,24 +17,27 @@ public:
     ~Dialog();
 
 signals:
-    void radioButton_5_toggled();
+    void checkBox_0_toggled(bool);
+    void checkBox_1_toggled(bool);
+    void checkBox_2_toggled(bool);
+    void checkBox_3_toggled(bool);
+    void checkBox_4_toggled(bool);
+    void checkBox_5_toggled(bool);
 
 public slots:
-    void on_radioButton_5_toggled(bool checked);
+    void on_checkBox_0_toggled(bool checked);
+    void on_checkBox_1_toggled(bool checked);
+    void on_checkBox_2_toggled(bool checked);
+    void on_checkBox_3_toggled(bool checked);
+    void on_checkBox_4_toggled(bool checked);
+    void on_checkBox_5_toggled(bool checked);
 
 private slots:
 
+    void on_saveAndExit_pushButton_clicked();
 
 private:
     Ui::Dialog *ui;
-
-
-    bool activateSensor_0 = false;
-    bool activateSensor_1 = false;
-    bool activateSensor_2 = false;
-    bool activateSensor_3 = false;
-    bool activateSensor_4 = false;
-    bool activateSensor_5 = false;
 
 };
 
