@@ -954,15 +954,15 @@ void MainWindow::on_set_m_button_clicked()
 
 /*
  * decimal point is at six digits from the right
- * output must be in this format: "scpoXXXXXXXX\r" example: scpo0061710 sets to f1 =  0.06171 for positive numbers
- * output must be in this format: "scpo-XXXXXXX\r" example: scpo-0061710 sets to f1 = -0.06171 for negative numbers
+ * output must be in this format: "scpoXXXXXXXX\r" example: scpo0061710 sets to dPhi1 =  0.06171 for positive numbers
+ * output must be in this format: "scpo-XXXXXXX\r" example: scpo-0061710 sets to dPhi1 = -0.06171 for negative numbers
  */
 void MainWindow::on_set_dPhi1_button_clicked()
 {
     int padUpTo = 8;         // eight digits for values > 0
     double dPhi1 = QInputDialog::getDouble(this,
-                                         "dPhi1 eingeben",
-                                         "valide Werte: -",
+                                         "Sensorkonstante dPhi1",
+                                         "Wert eingeben:",
                                          -0.068, -9.999999, 99.999999, 6);
     ui->dPhi1_textbrowser->clear();
     ui->dPhi1_textbrowser->append(QString::number(dPhi1, 'f', 6));
@@ -1000,15 +1000,15 @@ void MainWindow::on_set_dPhi1_button_clicked()
 }
 /*
  * decimal point is at six digits from the right
- * output must be in this format: "scptXXXXXXXX\r" example: scpt0061710 sets to f1 =  0.06171 for positive numbers
- * output must be in this format: "scpt-XXXXXXX\r" example: scpt-0061710 sets to f1 = -0.06171 for negative numbers
+ * output must be in this format: "scptXXXXXXXX\r" example: scpt0061710 sets to dPhi2 =  0.06171 for positive numbers
+ * output must be in this format: "scpt-XXXXXXX\r" example: scpt-0061710 sets to dPhi2 = -0.06171 for negative numbers
  */
 void MainWindow::on_set_dPhi2_button_clicked()
 {
     int padUpTo = 8;         // eight digits for values > 0
     double dPhi2 = QInputDialog::getDouble(this,
-                                         "dPhi2 eingeben",
-                                         "valide Werte: -",
+                                         "Sensorkonstante dPhi2",
+                                         "Wert eingeben:",
                                          -0.00035, -9.999999, 99.999999, 6);
     qDebug() << dPhi2;
 
@@ -1048,20 +1048,33 @@ void MainWindow::on_set_dPhi2_button_clicked()
 
 
 }
-
+/*
+ * decimal point is at six digits from the right
+ * output must be in this format: "scksXXXXXXXX\r" example: scks00000486 sets to dKSV1 =  0.000486 for positive numbers
+ * output must be in this format: "scks-XXXXXXX\r" example: scpt-0000486 sets to dKSV1 = -0.000486 for negative numbers
+ */
 void MainWindow::on_set_dKSV1_button_clicked()
 {
+    int padUpTo = 8;         // eight digits for values > 0
     double dKSV1 = QInputDialog::getDouble(this,
-                                         "dKSV1 eingeben",
-                                         "valide Werte: -",
-                                         0.000371, -1, 1, 6);
-    qDebug() << dKSV1 << "parse QString: " << QString::number(dKSV1);
+                                         "Sensorkonstante dKSV1",
+                                         "Wert eingeben:",
+                                         0.000371, -9.999999, 99.999999, 6);
+
+    qDebug() << dKSV1 << "parse QString: " << QString::number(dKSV1, 'f', 6);
 
     ui->dKSV1_textbrowser->clear();
-    ui->dKSV1_textbrowser->append(QString::number(dKSV1));
-    // adjusting and left padding with zeros to always have 8 characters with at least two leading zeros
-    // output must be in this format: "scmmXXXXXXXX\r" example: scks00000486 sets to dKSV1 = 0.000486
-    QString dKSV1_to_sensor = "scks" + QString::number(dKSV1 * 1000000).rightJustified(8, '0') + "\r";
+    ui->dKSV1_textbrowser->append(QString::number(dKSV1,'f', 6));
+
+    QString prepend = "";
+    if (dKSV1 < 0){
+        prepend = "scks-";
+        padUpTo = 7;        // change to seven digits for values < 0
+    }else{
+        prepend = "scks";
+    }
+
+    QString dKSV1_to_sensor = prepend + QString::number(dKSV1, 'f', 6).remove('.').remove('-').rightJustified(padUpTo, '0') + "\r";
     qDebug() << dKSV1_to_sensor;
     QByteArray out = dKSV1_to_sensor.toLatin1();
 
