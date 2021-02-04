@@ -1051,7 +1051,7 @@ void MainWindow::on_set_dPhi2_button_clicked()
 /*
  * decimal point is at six digits from the right
  * output must be in this format: "scksXXXXXXXX\r" example: scks00000486 sets to dKSV1 =  0.000486 for positive numbers
- * output must be in this format: "scks-XXXXXXX\r" example: scpt-0000486 sets to dKSV1 = -0.000486 for negative numbers
+ * output must be in this format: "scks-XXXXXXX\r" example: scks-0000486 sets to dKSV1 = -0.000486 for negative numbers
  */
 void MainWindow::on_set_dKSV1_button_clicked()
 {
@@ -1099,17 +1099,30 @@ void MainWindow::on_set_dKSV1_button_clicked()
 
 }
 
+/*
+ * decimal point is at six digits from the right
+ * output must be in this format: "sckvXXXXXXXX\r" example: sckv00000486 sets to dKSV2 =  0.000486 for positive numbers
+ * output must be in this format: "sckv-XXXXXXX\r" example: sckv-0000486 sets to dKSV2 = -0.000486 for negative numbers
+ */
 void MainWindow::on_set_dKSV2_button_clicked()
 {
+    int padUpTo = 8;        // eight digits for values > 0
     double dKSV2 = QInputDialog::getDouble(this,
-                                         "dKSV1 eingeben",
-                                         "valide Werte: -",
-                                         0, -1, 1, 6);
+                                         "Sensorkonstante dKSV2",
+                                         "Wert eingeben:",
+                                         0, -9.999999, 99.999999, 6);
     ui->dKSV2_textbrowser->clear();
-    ui->dKSV2_textbrowser->append(QString::number(dKSV2));
-    // adjusting and left padding with zeros to always have 8 characters with at least two leading zeros
-    // output must be in this format: "scmmXXXXXXXX\r" example: scks00000486 sets to dKSV2 = 0.0
-    QString dKSV2_to_sensor = "sckv" + QString::number(dKSV2 * 1000000).rightJustified(8, '0') + "\r";
+    ui->dKSV2_textbrowser->append(QString::number(dKSV2, 'f', 6));
+
+    QString prepend = "";
+    if (dKSV2 < 0){
+        prepend = "sckv-";
+        padUpTo = 7;        // change to seven digits for values < 0
+    }else{
+        prepend = "sckv";
+    }
+
+    QString dKSV2_to_sensor = prepend + QString::number(dKSV2, 'f', 6).remove('.').remove('-').rightJustified(padUpTo, '0') + "\r";
     qDebug() << dKSV2_to_sensor;
     QByteArray out = dKSV2_to_sensor.toLatin1();
 
@@ -1187,12 +1200,13 @@ void MainWindow::on_allSet_o2_clicked()
 void MainWindow::on_set_lmin_button_clicked()
 {
     double lmin = QInputDialog::getDouble(this,
-                                         "lmin eingeben",
-                                         "valide Werte: 45 - 60",
-                                         55.96, 45, 60, 2);
+                                         "Sensorkonstante lmin",
+                                         "Wert eingeben:",
+                                         55.96, 0, 90, 2);
     ui->lmin_textbrowser->clear();
-    ui->lmin_textbrowser->append(QString::number(lmin));
-    QString lmin_to_sensor = "kmin" + QString::number(lmin * 100);
+    ui->lmin_textbrowser->append(QString::number(lmin, 'f', 2));
+
+    QString lmin_to_sensor = "kmin" + QString::number(lmin, 'f', 2).remove('.').rightJustified(4, '0') + "\r";
     qDebug() << lmin_to_sensor;
     QByteArray out = lmin_to_sensor.toLatin1();
 
@@ -1218,12 +1232,13 @@ void MainWindow::on_set_lmin_button_clicked()
 void MainWindow::on_set_lmax_button_clicked()
 {
     double lmax = QInputDialog::getDouble(this,
-                                         "lmax eingeben",
-                                         "valide Werte: 15 - 30",
-                                         21.56, 15, 30, 2);
+                                         "Sensorkonstante lmax",
+                                         "Wert eingeben:",
+                                         21.56, 0, 90, 2);
     ui->lmax_textbrowser->clear();
-    ui->lmax_textbrowser->append(QString::number(lmax));
-    QString lmax_to_sensor = "kmax" + QString::number(lmax * 100);
+    ui->lmax_textbrowser->append(QString::number(lmax, 'f', 2));
+
+    QString lmax_to_sensor = "kmax" + QString::number(lmax, 'f', 2).remove('.').rightJustified(4, '0') + "\r";
     qDebug() << lmax_to_sensor;
     QByteArray out = lmax_to_sensor.toLatin1();
 
@@ -1251,10 +1266,10 @@ void MainWindow::on_set_pH0_button_clicked()
     double pH0 = QInputDialog::getDouble(this,
                                          "pH0 eingeben",
                                          "valide Werte: 6.0 - 8.0",
-                                         6.54, 6, 8, 2);
+                                         6.54, 0, 50, 2);
     ui->pH0_textbrowser->clear();
-    ui->pH0_textbrowser->append(QString::number(pH0));
-    QString pH0_to_sensor = "kpho0" + QString::number(pH0 * 100);
+    ui->pH0_textbrowser->append(QString::number(pH0, 'f', 2));
+    QString pH0_to_sensor = "kpho" + QString::number(pH0, 'f', 2).remove('.').rightJustified(4, '0') + "\r";
     qDebug() << pH0_to_sensor;
     QByteArray out = pH0_to_sensor.toLatin1();
 
@@ -1276,18 +1291,20 @@ void MainWindow::on_set_pH0_button_clicked()
         port_2_is_initiated = true;
     }
 }
-
+/*
+ * decimal point is at two digits from the right
+ * output must be in this format: "kdphXXXX\r" example: kdp0059 sets to dph0 =  0.59
+ */
 void MainWindow::on_set_dpH_button_clicked()
 {
     double dpH = QInputDialog::getDouble(this,
-                                         "dpH eingeben",
-                                         "valide Werte: 0.3 - 1.0",
-                                         0.51, 0.3, 1, 2);
+                                         "Sensoronstante dpH ",
+                                         "Wert eingeben:",
+                                         0.51, 0, 10, 2);
     ui->dpH_textbrowser->clear();
-    ui->dpH_textbrowser->append(QString::number(dpH));
-    // adjusting and left padding with zeros to always have 4 characters with at least one leading zero
-    // output must be in this format: "scmmXXXXXXXX\r" example: kdph0059 sets to dpH = 0.59
-    QString dpH_to_sensor = "kdph" + QString::number(dpH * 100).rightJustified(4, '0');
+    ui->dpH_textbrowser->append(QString::number(dpH,'f', 2));
+
+    QString dpH_to_sensor = "kdph" + QString::number(dpH, 'f', 2).remove('.').rightJustified(4, '0') + "\r";
     qDebug() << dpH_to_sensor;
     QByteArray out = dpH_to_sensor.toLatin1();
 
@@ -1312,13 +1329,23 @@ void MainWindow::on_set_dpH_button_clicked()
 
 void MainWindow::on_set_temp_button_clicked()
 {
+    int padUpTo = 4;
     double temp = QInputDialog::getDouble(this,
-                                         "temp eingeben",
-                                         "valide Werte: 35 - 40",
-                                         37, 35, 40, 2);
+                                         "Sensorkonstante Temp",
+                                         "Werte eingeben:",
+                                         37, -9.99, 60, 2);
     ui->temp_textbrowser->clear();
-    ui->temp_textbrowser->append(QString::number(temp));
-    QString temp_to_sensor = "ktem" + QString::number(temp * 100);
+    ui->temp_textbrowser->append(QString::number(temp, 'f', 2));
+
+    QString prepend = "";
+    if(temp < 0){
+        prepend = "ktem-";
+        padUpTo = 3;
+    }else{
+        prepend = "ktem";
+    }
+
+    QString temp_to_sensor = prepend + QString::number(temp, 'f', 2).remove('.').remove('-').rightJustified(padUpTo, '0') + "\r";
     qDebug() << temp_to_sensor;
     QByteArray out = temp_to_sensor.toLatin1();
 
