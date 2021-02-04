@@ -965,7 +965,7 @@ void MainWindow::on_set_dPhi1_button_clicked()
                                          "valide Werte: -",
                                          -0.068, -9.999999, 99.999999, 6);
     ui->dPhi1_textbrowser->clear();
-    ui->dPhi1_textbrowser->append(QString::number(dPhi1));
+    ui->dPhi1_textbrowser->append(QString::number(dPhi1, 'f', 6));
 
     QString prepend = "";
     if (dPhi1 < 0){
@@ -998,20 +998,32 @@ void MainWindow::on_set_dPhi1_button_clicked()
     }
 
 }
-
+/*
+ * decimal point is at six digits from the right
+ * output must be in this format: "scptXXXXXXXX\r" example: scpt0061710 sets to f1 =  0.06171 for positive numbers
+ * output must be in this format: "scpt-XXXXXXX\r" example: scpt-0061710 sets to f1 = -0.06171 for negative numbers
+ */
 void MainWindow::on_set_dPhi2_button_clicked()
 {
+    int padUpTo = 8;         // eight digits for values > 0
     double dPhi2 = QInputDialog::getDouble(this,
                                          "dPhi2 eingeben",
                                          "valide Werte: -",
-                                         -0.00035, -1, 1, 5);
+                                         -0.00035, -9.999999, 99.999999, 6);
     qDebug() << dPhi2;
 
     ui->dPhi2_textbrowser->clear();
-    ui->dPhi2_textbrowser->append(QString::number(dPhi2));
-    // adjusting and left padding with zeros to always have 7 characters with at least one leading zero
-    // output must be in this format: "scpo-XXXXXXX\r" example: scpt-0000037 sets to f1 = -0.00037
-    QString dPhi2_to_sensor = "scpt-" + QString::number(dPhi2 * 100000).rightJustified(7, '0') + "\r";
+    ui->dPhi2_textbrowser->append(QString::number(dPhi2, 'f', 6));
+
+    QString prepend = "";
+    if (dPhi2 < 0){
+        prepend = "scpt-";
+        padUpTo = 7;        // change to seven digits for values < 0
+    }else{
+        prepend = "scpt";
+    }
+
+    QString dPhi2_to_sensor = prepend + QString::number(dPhi2, 'f', 6).remove('.').remove('-').rightJustified(padUpTo, '0') + "\r";
     qDebug() << dPhi2_to_sensor;
     QByteArray out = dPhi2_to_sensor.toLatin1();
 
