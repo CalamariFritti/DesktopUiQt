@@ -850,25 +850,39 @@ void MainWindow::on_initialize_sensor_5_button_clicked()
  *
  **************************************************************************/
 
+/***
+ * getting user inputand transforming to output readable by sensor
+ * building output string with eight digits for positive values and seven digits with leading "-"
+ * for negative values
+ * output must be in this format: "scfoXXXXXXXX\r" example: scfo00080700 sets to f1 =  0.807 for positive numbers
+ * output must be in this format: "scfo-XXXXXXX\r" example: scfo-0080700 sets to f1 = -0.807 for negative numbers
+ ***/
 void MainWindow::on_set_f1_button_clicked()
 {
-
-
+    int padUpTo = 8;        // eight digits for values > 0
     double f1 = QInputDialog::getDouble(this,
-                                         "f1 eingeben",
-                                         "valide Werte: 0 - 1",
-                                         0.808, -1, 1, 6);
+                                         "Sensorkonstante f1",
+                                         "Wert eingeben:",
+                                         0.808, -99.99999, 999.99999, 5);
     ui->f1_textbrowser->clear();
-    ui->f1_textbrowser->append(QString::number(f1));
-    // adjusting and left padding with zeros to always have 8 characters with at least two leading zeros
-    // output must be in this format: "scfoXXXXXXXX\r" example: scfo00080700 sets to f1 = 0.807
-    QString prepend = "scfo";
+    ui->f1_textbrowser->append(QString::number(f1, 'f', 5));
 
-    qDebug() << f1;
+    QString prepend = "";
+    if (f1 < 0){
+        prepend = "scfo-";
+        padUpTo = 7;        // change to seven digits for values < 0
+    }else{
+        prepend = "scfo";
+    }
 
-    QString f1_to_sensor = prepend + QString::number(f1 * 100000).rightJustified(8, '0') + "\r";
+    qDebug() << "f1: " << f1;
+    qDebug() << "f1-string formatting: " << QString::number(f1, 'f');
+
+    // build string QString::number(numeral, output format 'f' for NOT sientific, precision)
+    QString f1_to_sensor = prepend + QString::number(f1, 'f', 5).remove('-').remove('.').rightJustified(padUpTo, '0') + "\r";
     QByteArray out = f1_to_sensor.toLatin1();
 
+    qDebug() << "f1_to_sensor: " << f1_to_sensor;
 
     if(sensor_0_is_available){
         port_3.write(out);
@@ -892,15 +906,24 @@ void MainWindow::on_set_f1_button_clicked()
 
 void MainWindow::on_set_m_button_clicked()
 {
+    int padUpTo = 8;
     double m = QInputDialog::getDouble(this,
-                                         "m eingeben",
-                                         "valide Werte: -",
-                                         30, 0, 50, 3);
+                                         "Sensorkonstante m",
+                                         "Wert eingeben:",
+                                         30, -9999.999, 99999.999, 3);
     ui->m_textbrowser->clear();
-    ui->m_textbrowser->append(QString::number(m));
+    ui->m_textbrowser->append(QString::number(m, 'f', 3));
+
+    QString prepend = "";
+    if (m < 0){
+        prepend = "scmm-";
+        padUpTo = 7;        // change to seven digits for values < 0
+    }else{
+        prepend = "scmm";
+    }
     // adjusting and left padding with zeros to always have 8 characters with at least two leading zeros
     // output must be in this format: "scmmXXXXXXXX\r" example: scmm00032110 sets to m = 32.11
-    QString m_to_sensor = "scmm" + QString::number(m * 1000).rightJustified(8, '0') + "\r";
+    QString m_to_sensor = prepend + QString::number(m, 'f', 3).remove('.').remove('-').rightJustified(padUpTo, '0') + "\r";
     qDebug() << m_to_sensor;
     QByteArray out = m_to_sensor.toLatin1();
 
@@ -934,7 +957,7 @@ void MainWindow::on_set_dPhi1_button_clicked()
     ui->dPhi1_textbrowser->append(QString::number(dPhi1));
     // adjusting and left padding with zeros to always have 7 characters with at least one leading zero
     // output must be in this format: "scpo-XXXXXXX\r" example: scpo-0061710 sets to f1 = -0.06171
-    QString dPhi1_to_sensor = "scpo-" + QString::number(dPhi1 * 1000000).remove('-').rightJustified(7, '0') + "\r";
+    QString dPhi1_to_sensor = "scpo" + QString::number(dPhi1 * 1000000).rightJustified(7, '0') + "\r";
     qDebug() << dPhi1_to_sensor;
     QByteArray out = dPhi1_to_sensor.toLatin1();
 
@@ -970,7 +993,7 @@ void MainWindow::on_set_dPhi2_button_clicked()
     ui->dPhi2_textbrowser->append(QString::number(dPhi2));
     // adjusting and left padding with zeros to always have 7 characters with at least one leading zero
     // output must be in this format: "scpo-XXXXXXX\r" example: scpt-0000037 sets to f1 = -0.00037
-    QString dPhi2_to_sensor = "scpt-" + QString::number(dPhi2 * 100000).remove('-').rightJustified(7, '0') + "\r";
+    QString dPhi2_to_sensor = "scpt-" + QString::number(dPhi2 * 100000).rightJustified(7, '0') + "\r";
     qDebug() << dPhi2_to_sensor;
     QByteArray out = dPhi2_to_sensor.toLatin1();
 
@@ -1043,7 +1066,7 @@ void MainWindow::on_set_dKSV2_button_clicked()
     ui->dKSV2_textbrowser->append(QString::number(dKSV2));
     // adjusting and left padding with zeros to always have 8 characters with at least two leading zeros
     // output must be in this format: "scmmXXXXXXXX\r" example: scks00000486 sets to dKSV2 = 0.0
-    QString dKSV2_to_sensor = "scks" + QString::number(dKSV2 * 1000000).rightJustified(8, '0') + "\r";
+    QString dKSV2_to_sensor = "sckv" + QString::number(dKSV2 * 1000000).rightJustified(8, '0') + "\r";
     qDebug() << dKSV2_to_sensor;
     QByteArray out = dKSV2_to_sensor.toLatin1();
 
