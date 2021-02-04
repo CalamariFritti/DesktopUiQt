@@ -1416,17 +1416,32 @@ void MainWindow::on_allSet_pH_clicked()
  *
  **************************************************************************/
 
+/*
+ * decimal point is at six digits from the right
+ * output must be in this format: "ctaoXXXXXXXX\r" example: ctao00003900 sets to A1 =  0.003900 for positive numbers
+ * output must be in this format: "ctao-XXXXXXX\r" example: ctao-0003900 sets to A1 = -0.003900 for negative numbers
+ */
 void MainWindow::on_set_A1_button_clicked()
 {
-    double f1 = QInputDialog::getDouble(this,
-                                         "f1 eingeben",
-                                         "valide Werte: -",
-                                         8.65, 5, 15, 4);
+    int padUpTo = 8;
+    double a1 = QInputDialog::getDouble(this,
+                                         "Sensorkonstante A1",
+                                         "Wert eingeben:",
+                                         8.65, -9.99999, 99.99999, 6);
     ui->A1_textbrowser->clear();
-    ui->A1_textbrowser->append(QString::number(f1));
-    QString f1_to_sensor = "ctao0" + QString::number(f1).remove('.').leftJustified(7,'0') + "\r";
-    qDebug() << f1_to_sensor;
-    QByteArray out = f1_to_sensor.toLatin1();
+    ui->A1_textbrowser->append(QString::number(a1, 'f', 6));
+
+    QString prepend = "";
+    if(a1 < 0){
+        prepend = "ctao-";
+        padUpTo = 7;
+    }else{
+        prepend = "ctao";
+    }
+
+    QString a1_to_sensor = prepend + QString::number(a1, 'f', 6).remove('.').remove('-').rightJustified(padUpTo,'0') + "\r";
+    qDebug() << a1_to_sensor;
+    QByteArray out = a1_to_sensor.toLatin1();
 
     if(sensor_4_is_available){
         port_4.write(out);
