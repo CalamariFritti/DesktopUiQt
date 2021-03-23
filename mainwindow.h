@@ -147,6 +147,12 @@ private slots:
         void setCorrectHarwareAddress_port_4(int arr[]);
         void setCorrectHarwareAddress_port_5(int arr[]);
         void rawVectorInit();
+        void on_lineEdit_returnPressed();
+
+        void on_comboBox_2_currentTextChanged(const QString &arg1);
+
+        void on_lineEdit_cursorPositionChanged(int arg1, int arg2);
+
 private:
     Ui::MainWindow *ui;
 

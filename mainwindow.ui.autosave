@@ -1713,6 +1713,16 @@ font-size: 30;</string>
        <string>Quit</string>
       </property>
      </widget>
+     <widget class="QChartView" name="lineGraph_o2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>680</width>
+        <height>400</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="CO2">
      <attribute name="title">
@@ -1820,6 +1830,16 @@ font-size: 30;</string>
        </property>
       </item>
      </widget>
+     <widget class="QChartView" name="lineGraph_co2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>680</width>
+        <height>400</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="pH">
      <attribute name="title">
@@ -1903,6 +1923,16 @@ font-size: 30;</string>
        <string>Zeige letzte:</string>
       </property>
      </widget>
+     <widget class="QChartView" name="lineGraph_ph">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>680</width>
+        <height>400</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -1917,6 +1947,13 @@ font-size: 30;</string>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QChartView</class>
+   <extends>QGraphicsView</extends>
+   <header>QtCharts</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

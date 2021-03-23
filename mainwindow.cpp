@@ -51,6 +51,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+QT_CHARTS_USE_NAMESPACE
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -69,7 +71,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     delay(1);
 
-    setHardwareAddressToId();
+//  setHardwareAddressToId();
 
     setPreInit();
 
@@ -146,6 +148,11 @@ void MainWindow::setupSensors()
     list_of_ports.append(&port_4);
     list_of_ports.append(&port_5);
 
+    for ( int i = 0; i < list_of_ports.count(); i++)
+    {
+        list_of_ports[i]->setBaudRate(QSerialPort::Baud19200);
+        qDebug() << "set baudrate to 19200: " << list_of_ports[i];
+    }
 
     QString turn_off_sensors = "mode0001\r";
     QByteArray out = turn_off_sensors.toLatin1();
@@ -740,8 +747,8 @@ void MainWindow::startDialog()
     QObject::connect(activation, &Dialog::checkBox_3_toggled, this, &MainWindow::setActiveSensor3);
     QObject::connect(activation, &Dialog::checkBox_4_toggled, this, &MainWindow::setActiveSensor4);
     QObject::connect(activation, &Dialog::checkBox_5_toggled, this, &MainWindow::setActiveSensor5);
-    activation->setWindowFlags(Qt::WindowStaysOnTopHint);
-    //   activation->setWindowState(Qt::WindowFullScreen);
+    activation->setWindowFlags(Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint);
+    activation->setWindowState(Qt::WindowFullScreen);
     activation->show();
 
 }
@@ -876,18 +883,16 @@ void MainWindow::on_set_f1_button_clicked()
         prepend = "scfo";
     }
 
-    qDebug() << "f1: " << f1;
-    qDebug() << "f1-string formatting: " << QString::number(f1, 'f');
-
     // build string QString::number(numeral, output format 'f' for NOT sientific, precision)
     QString f1_to_sensor = prepend + QString::number(f1, 'f', 5).remove('-').remove('.').rightJustified(padUpTo, '0') + "\r";
     QByteArray out = f1_to_sensor.toLatin1();
 
-    qDebug() << "f1_to_sensor: " << f1_to_sensor;
+    qDebug() << "out for f1: " << out;
+    qDebug() << out[0] << out[1] << out[2] << out[3];
 
     if(sensor_0_is_available){
         port_3.write(out);
-        qDebug() << "send to port_3" << port_3.write(out);
+        qDebug() << "f1-value send to port_3" << out << "length: " << port_3.write(out);
         f1_1 = true;
     }else if(sensor_1_is_available){
         port_5.write(out);
@@ -929,11 +934,12 @@ void MainWindow::on_set_m_button_clicked()
     }
 
     QString m_to_sensor = prepend + QString::number(m, 'f', 3).remove('.').remove('-').rightJustified(padUpTo, '0') + "\r";
-    qDebug() << m_to_sensor;
-    QByteArray out = m_to_sensor.toLatin1();
+
+    QByteArray out = QByteArray::fromHex(m_to_sensor.toLatin1());
 
     if(sensor_0_is_available){
         port_3.write(out);
+        qDebug() << "m value send to port_3" << out << "length: " << port_3.write(out);
         m_1 = true;
     }else if(sensor_1_is_available){
         port_5.write(out);
@@ -954,7 +960,7 @@ void MainWindow::on_set_m_button_clicked()
 
 /*
  * decimal point is at six digits from the right
- * output must be in this format: "scpoXXXXXXXX\r" example: scpo0061710 sets to dPhi1 =  0.06171 for positive numbers
+ * output must be in this format: "scpoXXXXXXXX\r" example: scpo00061710 sets to dPhi1 =  0.06171 for positive numbers
  * output must be in this format: "scpo-XXXXXXX\r" example: scpo-0061710 sets to dPhi1 = -0.06171 for negative numbers
  */
 void MainWindow::on_set_dPhi1_button_clicked()
@@ -979,6 +985,9 @@ void MainWindow::on_set_dPhi1_button_clicked()
     qDebug() << dPhi1_to_sensor;
     QByteArray out = dPhi1_to_sensor.toLatin1();
 
+
+    for(int i = 0; i < out.length(); i++){qDebug() << out[i];}
+
     if(sensor_0_is_available){
         port_3.write(out);
         dPhi1_1 = true;
@@ -1000,7 +1009,7 @@ void MainWindow::on_set_dPhi1_button_clicked()
 }
 /*
  * decimal point is at six digits from the right
- * output must be in this format: "scptXXXXXXXX\r" example: scpt0061710 sets to dPhi2 =  0.06171 for positive numbers
+ * output must be in this format: "scptXXXXXXXX\r" example: scpt00061710 sets to dPhi2 =  0.06171 for positive numbers
  * output must be in this format: "scpt-XXXXXXX\r" example: scpt-0061710 sets to dPhi2 = -0.06171 for negative numbers
  */
 void MainWindow::on_set_dPhi2_button_clicked()
@@ -1464,31 +1473,46 @@ void MainWindow::on_set_A1_button_clicked()
 
 void MainWindow::on_set_A2_button_clicked()
 {
+    int padUpTo = 8;
     double a2 = QInputDialog::getDouble(this,
-                                         "a2 eingeben",
-                                         "valide Werte: -",
-                                         56.08, 46, 66, 8);
+                                         "Sensorkonstante A2",
+                                         "Bitte Wert eingeben:",
+                                         56.08, -9.9999999, 99.999999, 6);
     ui->A2_textbrowser->clear();
-    ui->A2_textbrowser->append(QString::number(a2));
-    QString a2_to_sensor = "ctat" + QString::number(a2).remove('.').leftJustified(8, '0') + "\r";
+    ui->A2_textbrowser->append(QString::number(a2, 'f', 6));
+
+    QString prepend = "";
+    if(a2 < 0){
+        prepend = "ctat-";
+        padUpTo = 7;
+    }else{
+        prepend = "ctat";
+    }
+
+    QString a2_to_sensor = prepend + QString::number(a2, 'f', 6).remove('.').remove('-').rightJustified(padUpTo, '0') + "\r";
     qDebug() << a2_to_sensor;
     QByteArray out = a2_to_sensor.toLatin1();
 
 
-    if(sensor_4_is_available){
+    if(sensor_4_is_available)
+    {
         port_4.write(out);
         A2_1 = true;
-    }else if(sensor_5_is_available){
+    }
+    else if(sensor_5_is_available)
+    {
         port_1.write(out);
         A2_2 = true;
         qDebug() << "sensor 01: a2_2" << A2_2;
     }
 
-    if(A1_1 && A2_1 && x0_1 && dx_1 && temp_co2_1){
+    if(A1_1 && A2_1 && x0_1 && dx_1 && temp_co2_1)
+    {
         ui->allSet_cO2->setEnabled(true);
         port_4_is_initiated = true;
     }
-    else if (A1_2 && A2_2 && x0_2 && dx_2 && temp_co2_2) {
+    else if (A1_2 && A2_2 && x0_2 && dx_2 && temp_co2_2)
+    {
         ui->allSet_cO2->setEnabled(true);
         port_1_is_initiated = true;
     }
@@ -1496,14 +1520,23 @@ void MainWindow::on_set_A2_button_clicked()
 
 void MainWindow::on_set_x0_button_clicked()
 {
+    int padUpTo = 8;
     double x0 = QInputDialog::getDouble(this,
-                                         "x0 eingeben",
-                                         "valide Werte: -",
-                                         1.41, 0.5, 1.7, 8);
+                                         "Sensorkonstante x0",
+                                         "Bitte Wert eingeben:",
+                                         1.41, -9.999999, 99.999999, 6);
     ui->x0_textbrowser->clear();
-    ui->x0_textbrowser->append(QString::number(x0));
-    // input string manipulation removes '.' and pads the right with zeores if necessary
-    QString x0_to_sensor = "ctxo0" + QString::number(x0).remove('.').leftJustified(7, '0') + "\r";
+    ui->x0_textbrowser->append(QString::number(x0, 'f', 6));
+
+    QString prepend = "";
+    if(x0 < 0){
+        prepend = "ctxo-";
+        padUpTo = 7;
+    }else{
+        prepend = "ctxo";
+    }
+
+    QString x0_to_sensor = prepend + QString::number(x0,'f', 6).remove('.').remove('-').rightJustified(padUpTo, '0') + "\r";
     qDebug() << x0_to_sensor;
     QByteArray out = x0_to_sensor.toLatin1();
 
@@ -1528,16 +1561,27 @@ void MainWindow::on_set_x0_button_clicked()
 
 void MainWindow::on_set_dx_button_clicked()
 {
+    int padUpTo = 8;
     double dx = QInputDialog::getDouble(this,
                                          "dx eingeben",
                                          "valide Werte: -",
-                                         0.45, 0.3, 0.6, 8);
+                                         0.45, -9.999999, 99.999999, 6);
     ui->dx_textbrowser->clear();
-    ui->dx_textbrowser->append(QString::number(dx));
+    ui->dx_textbrowser->append(QString::number(dx, 'f', 6));
+
+    QString prepend = "";
+    if(dx < 0){
+        prepend = "ctdx-";
+        padUpTo = 7;
+    }else{
+        prepend = "ctdx";
+    }
+
     // adjusting and left padding with zeros to always have 7 characters
     // output must be in this format: "ctdx-XXXXXXX\r" example: ctdx-0000100 sets to dKSV2 = -0.0001
-    QString dx_to_sensor = "ctdx0" + QString::number(dx).remove('.').leftJustified(7, '0') + "\r";
+    QString dx_to_sensor = prepend + QString::number(dx, 'f', 6).remove('.').remove('-').rightJustified(8, '0') + "\r";
     qDebug() << "dx-Wert gesezt: " << dx_to_sensor;
+
     QByteArray out = dx_to_sensor.toLatin1();
     QString temp_to_sensor = "catp3710";
     QByteArray out_2 = temp_to_sensor.toLatin1();
@@ -1567,15 +1611,25 @@ void MainWindow::on_set_dx_button_clicked()
 
 void MainWindow::on_set_temp_co2_button_clicked()
 {
+    int padUpTo = 4;
     double temp = QInputDialog::getDouble(this,
                                          "Temperatur eingeben",
                                          "valide Werte: ",
-                                         37.1, 15, 45, 2);
+                                         37.1, 0, 60.00, 2);
     ui->temp_co2_textbrowser->clear();
-    ui->temp_co2_textbrowser->append(QString::number(temp));
+    ui->temp_co2_textbrowser->append(QString::number(temp, 'f', 2));
+
+    QString prepend = "";
+    if(temp < 0){
+        prepend = "catp-";
+        padUpTo = 3;
+    }else{
+        prepend = "catp";
+    }
+
     // adjusting and left padding with zeros to always have 7 characters
     // output must be in this format: "catpXXXX\r" example: catp3710 sets to temp = 37.1
-    QString temp_to_sensor = "catp" + QString::number(temp).remove('.').leftJustified(4, '0') + "\r";
+    QString temp_to_sensor = "catp" + QString::number(temp, 'f', 2).remove('.').remove('-').rightJustified(padUpTo, '0') + "\r";
     qDebug() << temp_to_sensor;
     QByteArray out = temp_to_sensor.toLatin1();
 
@@ -1991,7 +2045,7 @@ void MainWindow::on_stopMeassurementButton_clicked()
     port_3.write(out);
     port_4.write(out);
     port_5.write(out);
-
+    qDebug() << "all ports set to mode0001";
 }
 
 /**************************************************************************
@@ -2002,25 +2056,70 @@ void MainWindow::on_stopMeassurementButton_clicked()
 
 void MainWindow::on_quitButtonStartMain_clicked()
 {
+    on_stopMeassurementButton_clicked();
     close();
 }
 
 void MainWindow::on_quitButtonStartMain_2_clicked()
 {
+    on_stopMeassurementButton_clicked();
     close();
 }
 
 void MainWindow::on_quitButtonStartMain_3_clicked()
 {
+    on_stopMeassurementButton_clicked();
     close();
 }
 
 void MainWindow::on_quitButtonStartMain_4_clicked()
 {
+    on_stopMeassurementButton_clicked();
     close();
 }
 
 void MainWindow::on_quitButton_clicked()
 {
+    on_stopMeassurementButton_clicked();
     close();
+}
+
+void MainWindow::on_lineEdit_returnPressed()
+{
+    QByteArray serial_input;
+    QString input_buffer = "" ;
+
+    int index = ui->comboBox_2->currentIndex();
+
+    QString input = ui->lineEdit->text() + "\r";;
+    qDebug() << input;
+    QByteArray out = input.toLatin1();
+    qDebug() << out;
+
+    list_of_ports[index]->write(out);
+
+
+    if(!input_buffer.contains("\n\r")){
+        serial_input = list_of_ports[index]->readAll();
+        qDebug() << serial_input;
+        input_buffer += QString::fromStdString(serial_input.toStdString());
+        ui->textBrowser->setText(input_buffer);
+    }else {
+        qDebug()<< "fertig_port_5: " << input_buffer_port_5;
+
+        QString value = input_buffer;
+        qDebug() << value;
+        ui->textBrowser->setText(value);
+        input_buffer = "";
+    }
+}
+
+void MainWindow::on_comboBox_2_currentTextChanged(const QString &arg1)
+{
+
+}
+
+void MainWindow::on_lineEdit_cursorPositionChanged(int arg1, int arg2)
+{
+
 }
