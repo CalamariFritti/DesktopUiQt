@@ -160,13 +160,7 @@ void MainWindow::setupGraphs()
     ph_series->setName(ph_chart_name);
 
     QDateTime start = QDateTime::currentDateTime();
-    QDateTime range = start.addSecs(20);
-    o2_series->append(start.toMSecsSinceEpoch(), randInt());
-    o2_series->append(start.toMSecsSinceEpoch() + 1000, randInt());
-    o2_series->append(start.toMSecsSinceEpoch() + 2000, randInt());
-    o2_series->append(start.toMSecsSinceEpoch() + 3000, randInt());
-    o2_series->append(start.toMSecsSinceEpoch() + 4000, randInt());
-
+    QDateTime range = start.addSecs(60);
 
     co2_series->append(start.toMSecsSinceEpoch(), randInt());
     co2_series->append(start.toMSecsSinceEpoch() + 1000, randInt());
@@ -192,6 +186,7 @@ void MainWindow::setupGraphs()
 
     QValueAxis *axisY = new QValueAxis;
     axisY->setLabelFormat("%i");
+    axisY->setRange(-100, 500);
     axisY->setTitleText("Werte");
 
     QDateTimeAxis *co2_axisX = new QDateTimeAxis;
@@ -1912,15 +1907,12 @@ void MainWindow::on_start_measurement_button_clicked()
         set_main_output_buttons();
         write_to_file(filepath);
         write_to_file_raw(raw_filepath);
+        append_to_plotSeries();
 
     });
 
     timer_for_output->start(1000);
 
-    QList<QString> hardware_id;
-
-
-    QList<QSerialPort> port_list;
 }
 
 void MainWindow::set_main_output_buttons()
@@ -1991,9 +1983,18 @@ void MainWindow::write_to_file_raw(QString raw_filepath)
 }
 
 /***************************************************************
+ * appending to series triggers an automated update of the graph
+ ***************************************************************/
+void MainWindow::append_to_plotSeries()
+{
+    delay(1);
+    QDateTime now = QDateTime::currentDateTime();
+    o2_series->append(now.toMSecsSinceEpoch(), qv_o2_1[qv_o2_1.size() -1]);
+}
+
+/***************************************************************
  * for output strings to log files
  ***************************************************************/
-
 QString MainWindow::get_timeStamp()
 {
      return QDateTime::currentDateTime().toString("dd.MM.yyyy_HH:mm:ss");

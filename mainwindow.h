@@ -165,6 +165,8 @@ private slots:
         void on_plotButtonSensor_1_clicked();
 
         int randInt();
+        void append_to_plotSeries();
+
 private:
     Ui::MainWindow *ui;
 
