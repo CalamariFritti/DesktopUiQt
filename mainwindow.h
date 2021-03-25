@@ -26,6 +26,8 @@
 
 #include "dialog.h"
 
+QT_CHARTS_USE_NAMESPACE
+
 namespace Ui {
 class MainWindow;
 }
@@ -36,113 +38,113 @@ class MainWindow : public QMainWindow
 
 public:
 
-    explicit MainWindow(QWidget *parent = 0);
+        explicit MainWindow(QWidget *parent = 0);
 
-    Dialog *activaton;
+        Dialog *activaton;
 
-    QList<QSerialPort*> list_of_ports;
+        QList<QSerialPort*> list_of_ports;
 
-    ~MainWindow();
+        ~MainWindow();
 
 public slots:
 
-    QString get_timeStamp();
-    void get_sensor_value_port_0();
-    void get_sensor_value_port_1();
-    void get_sensor_value_port_2();
-    void get_sensor_value_port_3();
-    void get_sensor_value_port_4();
-    void get_sensor_value_port_5();
+        QString get_timeStamp();
+        void get_sensor_value_port_0();
+        void get_sensor_value_port_1();
+        void get_sensor_value_port_2();
+        void get_sensor_value_port_3();
+        void get_sensor_value_port_4();
+        void get_sensor_value_port_5();
 
 
-    void write_to_file(QString);
-    void write_to_file_raw(QString);
+        void write_to_file(QString);
+        void write_to_file_raw(QString);
 
-    void setActiveSensor0(bool);
-    void setActiveSensor1(bool);
-    void setActiveSensor2(bool);
-    void setActiveSensor3(bool);
-    void setActiveSensor4(bool);
-    void setActiveSensor5(bool);
+        void setActiveSensor0(bool);
+        void setActiveSensor1(bool);
+        void setActiveSensor2(bool);
+        void setActiveSensor3(bool);
+        void setActiveSensor4(bool);
+        void setActiveSensor5(bool);
 
 signals:
-    void radioButton_0_toggled(bool);
-    void radioButton_1_toggled(bool);
-    void radioButton_2_toggled(bool);
-    void radioButton_3_toggled(bool);
-    void radioButton_4_toggled(bool);
-    void radioButton_5_toggled(bool);
+        void radioButton_0_toggled(bool);
+        void radioButton_1_toggled(bool);
+        void radioButton_2_toggled(bool);
+        void radioButton_3_toggled(bool);
+        void radioButton_4_toggled(bool);
+        void radioButton_5_toggled(bool);
 
 private slots:
 
-    void delay(int);
+        void delay(int);
 
-    void setFontsizesAndBackgroundColors();
+        void setFontsizesAndBackgroundColors();
 
-    void setupSensors();
+        void setupSensors();
 
-    void setHardwareAddressToId();
+        void setHardwareAddressToId();
 
-    void startDialog();
+        void startDialog();
 
-    void setPreInit();
+        void setPreInit();
 
-    void on_quitButtonStartMain_clicked();
+        void on_quitButtonStartMain_clicked();
 
-    void on_initialize_sensor_0_button_clicked();
-    void on_initialize_sensor_1_button_clicked();
-    void on_initialize_sensor_2_button_clicked();
-    void on_initialize_sensor_3_button_clicked();
-    void on_initialize_sensor_4_button_clicked();
-    void on_initialize_sensor_5_button_clicked();
+        void on_initialize_sensor_0_button_clicked();
+        void on_initialize_sensor_1_button_clicked();
+        void on_initialize_sensor_2_button_clicked();
+        void on_initialize_sensor_3_button_clicked();
+        void on_initialize_sensor_4_button_clicked();
+        void on_initialize_sensor_5_button_clicked();
 
     // initialisation of o2-sensor
-    void on_set_f1_button_clicked();
-    void on_set_m_button_clicked();
-    void on_set_dPhi1_button_clicked();
-    void on_set_dPhi2_button_clicked();
-    void on_set_dKSV1_button_clicked();
-    void on_set_dKSV2_button_clicked();
-    void on_quitButtonStartMain_2_clicked();
-    void on_allSet_o2_clicked();
+        void on_set_f1_button_clicked();
+        void on_set_m_button_clicked();
+        void on_set_dPhi1_button_clicked();
+        void on_set_dPhi2_button_clicked();
+        void on_set_dKSV1_button_clicked();
+        void on_set_dKSV2_button_clicked();
+        void on_quitButtonStartMain_2_clicked();
+        void on_allSet_o2_clicked();
 
     // inititalisation of ph-sensor
-    void on_set_lmin_button_clicked();
-    void on_set_lmax_button_clicked();
-    void on_set_pH0_button_clicked();
-    void on_set_dpH_button_clicked();
-    void on_set_temp_button_clicked();
-    void on_quitButtonStartMain_3_clicked();
-    void on_allSet_pH_clicked();
+        void on_set_lmin_button_clicked();
+        void on_set_lmax_button_clicked();
+        void on_set_pH0_button_clicked();
+        void on_set_dpH_button_clicked();
+        void on_set_temp_button_clicked();
+        void on_quitButtonStartMain_3_clicked();
+        void on_allSet_pH_clicked();
 
     // initialisation of co2-sensor
-    void on_set_A1_button_clicked();
-    void on_set_A2_button_clicked();
-    void on_set_x0_button_clicked();
-    void on_set_dx_button_clicked();
-    void on_allSet_cO2_clicked();
-    void on_quitButtonStartMain_4_clicked();
+        void on_set_A1_button_clicked();
+        void on_set_A2_button_clicked();
+        void on_set_x0_button_clicked();
+        void on_set_dx_button_clicked();
+        void on_allSet_cO2_clicked();
+        void on_quitButtonStartMain_4_clicked();
 
-    void on_start_measurement_button_clicked();
+        void on_start_measurement_button_clicked();
 
-    void set_main_output_buttons();
+        void set_main_output_buttons();
 
-    void on_stopMeassurementButton_clicked();
+        void on_stopMeassurementButton_clicked();
 
-    void on_quitButton_clicked();
+        void on_quitButton_clicked();
 
-    void on_set_temp_co2_button_clicked();
+        void on_set_temp_co2_button_clicked();
 
-    void getHwAdddress_port_0();
-    void getHwAdddress_port_1();
-    void getHwAdddress_port_2();
-    void getHwAdddress_port_3();
-    void getHwAdddress_port_4();
-    void getHwAdddress_port_5();
+        void getHwAdddress_port_0();
+        void getHwAdddress_port_1();
+        void getHwAdddress_port_2();
+        void getHwAdddress_port_3();
+        void getHwAdddress_port_4();
+        void getHwAdddress_port_5();
 
-    void setCorrectHarwareAddress_port_0(int arr[]);
+        void setCorrectHarwareAddress_port_0(int arr[]);
         void setCorrectHarwareAddress_port_1(int arr[]);
-    void setCorrectHarwareAddress_port_2(int arr[]);
+        void setCorrectHarwareAddress_port_2(int arr[]);
         void setCorrectHarwareAddress_port_3(int arr[]);
         void setCorrectHarwareAddress_port_4(int arr[]);
         void setCorrectHarwareAddress_port_5(int arr[]);
@@ -153,6 +155,16 @@ private slots:
 
         void on_lineEdit_cursorPositionChanged(int arg1, int arg2);
 
+        void setupGraphs();
+        void on_quitButtonSensor_1_clicked();
+
+        void on_quitButtonSensor_2_clicked();
+
+        void on_quitButtonSensor_3_clicked();
+
+        void on_plotButtonSensor_1_clicked();
+
+        int randInt();
 private:
     Ui::MainWindow *ui;
 
@@ -164,7 +176,32 @@ private:
 
     QTimer * timer_for_output;
 
+    // for drawing purposes, holding charts, serieses and values(vector)
+    QChart *o2_chart;
+    QChart *co2_chart;
+    QChart *ph_chart;
+
+    QChartView *o2_chartView;
+    QChartView *co2_chartView;
+    QChartView *ph_chartView;
+
+    QGridLayout *o2_gridLayout;
+    QGridLayout *co2_gridLayout;
+    QGridLayout *ph_gridLayout;
+
+    QList<QChart> list_of_charts;
+
+    QString o2_chart_name;
+    QString co2_chart_name;
+    QString ph_chart_name;
+
+    QLineSeries *o2_series;
+    QLineSeries *co2_series;
+    QLineSeries *ph_series;
+
     QVector<double> qv_o2_1, qv_o2_2, qv_co2_1, qv_co2_2, qv_ph_1, qv_ph_2;
+
+    // for raw log file values
     QList<QString> raw_o2_1, raw_o2_2, raw_co2_1, raw_co2_2, raw_ph_1, raw_ph_2;
 
     // this array is for determining the hw_address (/dev/ttyUSB0,...) match the hw_id's (N01, N02, ...)

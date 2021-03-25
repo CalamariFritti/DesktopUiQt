@@ -64,6 +64,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     rawVectorInit();
 
+    setupGraphs();
+
     // wait for 10 seconds to make sure the sensors are started
 //  delay(10);
 
@@ -139,8 +141,105 @@ void MainWindow::rawVectorInit()
     }
 }
 
+void MainWindow::setupGraphs()
+{
+    o2_chart = new QChart();
+    co2_chart = new QChart();
+    ph_chart = new QChart();
+
+    o2_series = new QLineSeries(o2_chart);
+    co2_series = new QLineSeries(co2_chart);
+    ph_series = new QLineSeries(ph_chart);
+
+    o2_chart_name = "O2 Werte";
+    co2_chart_name = "CO2 Werte";
+    ph_chart_name = "pH Werte";
+
+    o2_series->setName(o2_chart_name);
+    co2_series->setName(co2_chart_name);
+    ph_series->setName(ph_chart_name);
+
+    QDateTime start = QDateTime::currentDateTime();
+    QDateTime range = start.addSecs(20);
+    o2_series->append(start.toMSecsSinceEpoch(), randInt());
+    o2_series->append(start.toMSecsSinceEpoch() + 1000, randInt());
+    o2_series->append(start.toMSecsSinceEpoch() + 2000, randInt());
+    o2_series->append(start.toMSecsSinceEpoch() + 3000, randInt());
+    o2_series->append(start.toMSecsSinceEpoch() + 4000, randInt());
+
+
+    co2_series->append(start.toMSecsSinceEpoch(), randInt());
+    co2_series->append(start.toMSecsSinceEpoch() + 1000, randInt());
+    co2_series->append(start.toMSecsSinceEpoch() + 2000, randInt());
+    co2_series->append(start.toMSecsSinceEpoch() + 3000, randInt());
+    co2_series->append(start.toMSecsSinceEpoch() + 4000, randInt());
+    co2_series->append(start.toMSecsSinceEpoch() + 5000, randInt());
+    co2_series->append(start.toMSecsSinceEpoch() + 6000, randInt());
+    co2_series->append(start.toMSecsSinceEpoch() + 7000, randInt());
+    co2_series->append(start.toMSecsSinceEpoch() + 8000, randInt());
+
+    qDebug() << randInt();
+
+    o2_chart->addSeries(o2_series);
+    co2_chart->addSeries(co2_series);
+    ph_chart->addSeries(ph_series);
+
+    QDateTimeAxis *axisX = new QDateTimeAxis;
+    //axisX->setTickCount(30);
+    axisX->setRange(start, range);
+    axisX->setFormat("hh:mm:ss");
+    axisX->setTitleText("Zeit");
+
+    QValueAxis *axisY = new QValueAxis;
+    axisY->setLabelFormat("%i");
+    axisY->setTitleText("Werte");
+
+    QDateTimeAxis *co2_axisX = new QDateTimeAxis;
+    co2_axisX->setTickCount(10);
+    co2_axisX->setFormat("hh:mm:ss");
+    co2_axisX->setTitleText("Zeit");
+
+    QValueAxis *co2_axisY = new QValueAxis;
+    co2_axisY->setLabelFormat("%d");
+    co2_axisY->setTitleText("Werte");
+
+    o2_chart->addAxis(axisX, Qt::AlignBottom);
+    o2_chart->addAxis(axisY, Qt::AlignLeft);
+    o2_series->attachAxis(axisX);
+    o2_series->attachAxis(axisY);
+
+    o2_chartView = new QChartView(o2_chart);
+    o2_chartView->setRenderHint(QPainter::Antialiasing);
+
+    o2_gridLayout = new QGridLayout();
+    ui->lineGraph_o2->setLayout(o2_gridLayout);
+    o2_gridLayout->addWidget(o2_chartView, 0, 0);
+
+    co2_chart->addAxis(co2_axisX, Qt::AlignBottom);
+    co2_chart->addAxis(co2_axisY, Qt::AlignLeft);
+    co2_series->attachAxis(co2_axisX);
+    co2_series->attachAxis(co2_axisY);
+
+    co2_chartView = new QChartView(co2_chart);
+    co2_chartView->setRenderHint(QPainter::Antialiasing);
+
+    co2_gridLayout = new QGridLayout(ui->lineGraph_co2);
+    co2_gridLayout->addWidget(co2_chartView, 0, 0);
+
+    ui->lineGraph_ph->setChart(ph_chart);
+
+}
+
+int MainWindow::randInt(){
+    int x;
+    return x = 0 + (rand() % ((int)10-0+1));
+}
+
 void MainWindow::setupSensors()
 {
+    QString turn_off_sensors = "mode0001\r";
+    QByteArray out = turn_off_sensors.toLatin1();
+
     list_of_ports.append(&port_0);
     list_of_ports.append(&port_1);
     list_of_ports.append(&port_2);
@@ -148,19 +247,65 @@ void MainWindow::setupSensors()
     list_of_ports.append(&port_4);
     list_of_ports.append(&port_5);
 
-    for ( int i = 0; i < list_of_ports.count(); i++)
-    {
-        list_of_ports[i]->setBaudRate(QSerialPort::Baud19200);
-        qDebug() << "set baudrate to 19200: " << list_of_ports[i];
-    }
+    QListIterator<QSerialPort*> i(list_of_ports);
 
-    QString turn_off_sensors = "mode0001\r";
-    QByteArray out = turn_off_sensors.toLatin1();
-
-    // setup ports to output mode 0001 -> sending only on request ("data<CR>")
     qDebug() << "port 0 is on this one: " << port_0_system_location;
     port_0.setPortName(port_0_system_location);
     qDebug() << " portname set to: " << port_0.portName();
+
+    qDebug() << "port 1 is on this one: " << port_1_system_location;
+    port_1.setPortName(port_1_system_location);
+    qDebug() << " portname set";
+
+    qDebug() << "port 2 is on this one: " << port_2_system_location;
+    port_2.setPortName(port_2_system_location);
+    qDebug() << " portname set";
+
+    qDebug() << "port 3 is on this one: " << port_3_system_location;
+    port_3.setPortName(port_3_system_location);
+    qDebug() << " portname set";
+
+    qDebug() << "port 4 is on this one: " << port_4_system_location;
+    port_4.setPortName(port_4_system_location);
+    qDebug() << " portname set";
+
+    qDebug() << "port 5 is on this one: " << port_5_system_location;
+    port_5.setPortName(port_5_system_location);
+    qDebug() << " portname set";
+
+    while (i.hasNext())
+    {
+        QSerialPort *port = i.peekNext();
+
+        port->open(QSerialPort::ReadWrite);
+        qDebug() << "first open sets open:" << port->isOpen();
+        port->setBaudRate(QSerialPort::Baud19200);
+        qDebug() << "set baudrate to 19200: " << port;
+        port->setDataBits(QSerialPort::Data8);         // default for presens EOM
+        qDebug() << "Data8 set";
+        port->setFlowControl(QSerialPort::NoFlowControl);  // default for presens EOM
+        qDebug() << "noFlow Contr set";
+        port->setParity(QSerialPort::NoParity);            // default for presens EOM
+        qDebug() << "no parity set";
+        port->setStopBits(QSerialPort::OneStop);           // default for presens EOM
+        qDebug() << "onestop set";
+
+        port->open(QSerialPort::ReadWrite);
+        qDebug() << "is the port really open?" << port->isOpen();
+        port->write(out);
+        qDebug() << out;
+        qDebug() << port << "in mode 0001";
+        qDebug() << port << "is open: " << port->isOpen();
+        qDebug() << "------------------------------------------------------------------";
+
+
+        i.next();
+    }
+
+/*
+
+    // setup ports to output mode 0001 -> sending only on request ("data<CR>")
+
     port_0.open(QSerialPort::ReadWrite);
      qDebug() << "first open sets open:" << port_0.isOpen();
     port_0.setBaudRate(QSerialPort::Baud19200);     // default for presens EOM
@@ -183,9 +328,7 @@ void MainWindow::setupSensors()
     qDebug() << "is closed: " << port_0.isOpen();
 
     // port 1
-    qDebug() << "port 1 is on this one: " << port_1_system_location;
-    port_1.setPortName(port_1_system_location);
-    qDebug() << " portname set";
+
     port_1.open(QSerialPort::ReadWrite);
     qDebug() << "open, set to ReadWrite";
     port_1.setBaudRate(QSerialPort::Baud19200);     // default for presens EOM
@@ -207,9 +350,7 @@ void MainWindow::setupSensors()
     qDebug() << "is closed: " << port_1.isOpen();
 
     // port 2
-    qDebug() << "port 2 is on this one: " << port_2_system_location;
-    port_2.setPortName(port_2_system_location);
-    qDebug() << " portname set";
+
     port_2.open(QSerialPort::ReadWrite);
     qDebug() << "open, set to ReadWrite";
     port_2.setBaudRate(QSerialPort::Baud19200);     // default for presens EOM
@@ -231,9 +372,7 @@ void MainWindow::setupSensors()
     qDebug() << "is closed: " << port_2.isOpen();
 
     // port 3
-    qDebug() << "port 3 is on this one: " << port_3_system_location;
-    port_3.setPortName(port_3_system_location);
-    qDebug() << " portname set";
+
     port_3.open(QSerialPort::ReadWrite);
     qDebug() << "open, set to ReadWrite";
     port_3.setBaudRate(QSerialPort::Baud19200);     // default for presens EOM
@@ -255,9 +394,7 @@ void MainWindow::setupSensors()
     qDebug() << "is closed: " << port_3.isOpen();
 
     // port 4
-    qDebug() << "port 4 is on this one: " << port_4_system_location;
-    port_4.setPortName(port_4_system_location);
-    qDebug() << " portname set";
+
     port_4.open(QSerialPort::ReadWrite);
     qDebug() << "open, set to ReadWrite";
     port_4.setBaudRate(QSerialPort::Baud19200);     // default for presens EOM
@@ -279,9 +416,7 @@ void MainWindow::setupSensors()
     qDebug() << "true -> open; false -> closed: " << port_4.isOpen();
 
     // port 5
-    qDebug() << "port 5 is on this one: " << port_5_system_location;
-    port_5.setPortName(port_5_system_location);
-    qDebug() << " portname set";
+
     port_5.open(QSerialPort::ReadWrite);
     qDebug() << "open, set to ReadWrite";
     port_5.setBaudRate(QSerialPort::Baud19200);     // default for presens EOM
@@ -300,7 +435,7 @@ void MainWindow::setupSensors()
     qDebug() << "port_5 in mode 0001";
     qDebug() << "------------------------------------------------------------------";
     qDebug() << "is closed: " << port_5.isOpen();
-
+*/
 }
 
 void MainWindow::setHardwareAddressToId()
@@ -747,7 +882,7 @@ void MainWindow::startDialog()
     QObject::connect(activation, &Dialog::checkBox_3_toggled, this, &MainWindow::setActiveSensor3);
     QObject::connect(activation, &Dialog::checkBox_4_toggled, this, &MainWindow::setActiveSensor4);
     QObject::connect(activation, &Dialog::checkBox_5_toggled, this, &MainWindow::setActiveSensor5);
-    activation->setWindowFlags(Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint);
+    activation->setWindowFlags(Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint | Qt::X11BypassWindowManagerHint);
     activation->setWindowState(Qt::WindowFullScreen);
     activation->show();
 
@@ -1579,7 +1714,7 @@ void MainWindow::on_set_dx_button_clicked()
 
     // adjusting and left padding with zeros to always have 7 characters
     // output must be in this format: "ctdx-XXXXXXX\r" example: ctdx-0000100 sets to dKSV2 = -0.0001
-    QString dx_to_sensor = prepend + QString::number(dx, 'f', 6).remove('.').remove('-').rightJustified(8, '0') + "\r";
+    QString dx_to_sensor = prepend + QString::number(dx, 'f', 6).remove('.').remove('-').rightJustified(padUpTo, '0') + "\r";
     qDebug() << "dx-Wert gesezt: " << dx_to_sensor;
 
     QByteArray out = dx_to_sensor.toLatin1();
@@ -2084,6 +2219,25 @@ void MainWindow::on_quitButton_clicked()
     close();
 }
 
+void MainWindow::on_quitButtonSensor_1_clicked()
+{
+    on_stopMeassurementButton_clicked();
+    close();
+}
+
+void MainWindow::on_quitButtonSensor_2_clicked()
+{
+    on_stopMeassurementButton_clicked();
+    close();
+}
+
+void MainWindow::on_quitButtonSensor_3_clicked()
+{
+    on_stopMeassurementButton_clicked();
+    close();
+}
+
+
 void MainWindow::on_lineEdit_returnPressed()
 {
     QByteArray serial_input;
@@ -2122,4 +2276,17 @@ void MainWindow::on_comboBox_2_currentTextChanged(const QString &arg1)
 void MainWindow::on_lineEdit_cursorPositionChanged(int arg1, int arg2)
 {
 
+}
+
+void MainWindow::on_plotButtonSensor_1_clicked()
+{
+    o2_series->remove(0);
+
+        QDateTime start = QDateTime::currentDateTime();
+    o2_series->append(start.toMSecsSinceEpoch() + 5000, randInt());
+    o2_series->append(start.toMSecsSinceEpoch() + 6000, randInt());
+    o2_series->append(start.toMSecsSinceEpoch() + 7000, randInt());
+    o2_series->append(start.toMSecsSinceEpoch() + 8000, randInt());
+
+    qDebug() << "plot button";
 }
