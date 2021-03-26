@@ -159,45 +159,44 @@ void MainWindow::setupGraphs()
     co2_series->setName(co2_chart_name);
     ph_series->setName(ph_chart_name);
 
-    QDateTime start = QDateTime::currentDateTime();
+    start = QDateTime::currentDateTime();
     QDateTime range = start.addSecs(60);
-
-    co2_series->append(start.toMSecsSinceEpoch(), randInt());
-    co2_series->append(start.toMSecsSinceEpoch() + 1000, randInt());
-    co2_series->append(start.toMSecsSinceEpoch() + 2000, randInt());
-    co2_series->append(start.toMSecsSinceEpoch() + 3000, randInt());
-    co2_series->append(start.toMSecsSinceEpoch() + 4000, randInt());
-    co2_series->append(start.toMSecsSinceEpoch() + 5000, randInt());
-    co2_series->append(start.toMSecsSinceEpoch() + 6000, randInt());
-    co2_series->append(start.toMSecsSinceEpoch() + 7000, randInt());
-    co2_series->append(start.toMSecsSinceEpoch() + 8000, randInt());
-
-    qDebug() << randInt();
 
     o2_chart->addSeries(o2_series);
     co2_chart->addSeries(co2_series);
     ph_chart->addSeries(ph_series);
 
-    QDateTimeAxis *axisX = new QDateTimeAxis;
-    //axisX->setTickCount(30);
-    axisX->setRange(start, range);
+    // initial setup for ph axises
+    axisX = new QDateTimeAxis;
     axisX->setFormat("hh:mm:ss");
     axisX->setTitleText("Zeit");
 
-    QValueAxis *axisY = new QValueAxis;
+    axisY = new QValueAxis;
     axisY->setLabelFormat("%i");
     axisY->setRange(-100, 500);
     axisY->setTitleText("Werte");
 
-    QDateTimeAxis *co2_axisX = new QDateTimeAxis;
-    co2_axisX->setTickCount(10);
+    // initial setup for ph axises
+    co2_axisX = new QDateTimeAxis;
     co2_axisX->setFormat("hh:mm:ss");
     co2_axisX->setTitleText("Zeit");
 
-    QValueAxis *co2_axisY = new QValueAxis;
-    co2_axisY->setLabelFormat("%d");
+    co2_axisY = new QValueAxis;
+    co2_axisY->setLabelFormat("%i");
+    co2_axisY->setRange(-100, 500);
     co2_axisY->setTitleText("Werte");
 
+    // initial setup for ph axises
+    ph_axisX = new QDateTimeAxis;
+    ph_axisX->setFormat("hh:mm:ss");
+    ph_axisX->setTitleText("Zeit");
+
+    ph_axisY = new QValueAxis;
+    ph_axisY->setLabelFormat("%i");
+    ph_axisY->setRange(-100, 500);
+    ph_axisY->setTitleText("Werte");
+
+    // initial setup for o2 chart
     o2_chart->addAxis(axisX, Qt::AlignBottom);
     o2_chart->addAxis(axisY, Qt::AlignLeft);
     o2_series->attachAxis(axisX);
@@ -210,6 +209,7 @@ void MainWindow::setupGraphs()
     ui->lineGraph_o2->setLayout(o2_gridLayout);
     o2_gridLayout->addWidget(o2_chartView, 0, 0);
 
+    // initial setup for o2 chart
     co2_chart->addAxis(co2_axisX, Qt::AlignBottom);
     co2_chart->addAxis(co2_axisY, Qt::AlignLeft);
     co2_series->attachAxis(co2_axisX);
@@ -218,10 +218,23 @@ void MainWindow::setupGraphs()
     co2_chartView = new QChartView(co2_chart);
     co2_chartView->setRenderHint(QPainter::Antialiasing);
 
-    co2_gridLayout = new QGridLayout(ui->lineGraph_co2);
+    co2_gridLayout = new QGridLayout();
+    ui->lineGraph_co2->setLayout(co2_gridLayout);
     co2_gridLayout->addWidget(co2_chartView, 0, 0);
 
-    ui->lineGraph_ph->setChart(ph_chart);
+    // initial setup for pH chart
+    ph_chart->addAxis(ph_axisX, Qt::AlignBottom);
+    ph_chart->addAxis(ph_axisY, Qt::AlignLeft);
+    ph_series->attachAxis(ph_axisX);
+    ph_series->attachAxis(ph_axisY);
+
+    ph_chartView = new QChartView(ph_chart);
+    ph_chartView->setRenderHint(QPainter::Antialiasing);
+
+    ph_gridLayout = new QGridLayout();
+    ui->lineGraph_ph->setLayout(ph_gridLayout);
+    ph_gridLayout->addWidget(ph_chartView, 0, 0);
+
 
 }
 
@@ -1065,9 +1078,11 @@ void MainWindow::on_set_m_button_clicked()
 
     QString m_to_sensor = prepend + QString::number(m, 'f', 3).remove('.').remove('-').rightJustified(padUpTo, '0') + "\r";
 
-    QByteArray out = QByteArray::fromHex(m_to_sensor.toLatin1());
+    QByteArray out = m_to_sensor.toLatin1();
 
+            qDebug() << "SENSOR = ? "<< sensor_0_is_available;
     if(sensor_0_is_available){
+        qDebug() << "SENSOR = ? "<< sensor_0_is_available;
         port_3.write(out);
         qDebug() << "m value send to port_3" << out << "length: " << port_3.write(out);
         m_1 = true;
@@ -1987,9 +2002,14 @@ void MainWindow::write_to_file_raw(QString raw_filepath)
  ***************************************************************/
 void MainWindow::append_to_plotSeries()
 {
-    delay(1);
     QDateTime now = QDateTime::currentDateTime();
+
+    axisX->setRange(start, now.addSecs(2));
+    co2_axisX->setRange(start, now.addSecs(2));
+    ph_axisX->setRange(start, now.addSecs(2));
     o2_series->append(now.toMSecsSinceEpoch(), qv_o2_1[qv_o2_1.size() -1]);
+    co2_series->append(now.toMSecsSinceEpoch(), qv_co2_1[qv_o2_1.size() -1]);
+    ph_series->append(now.toMSecsSinceEpoch(), qv_ph_1[qv_o2_1.size() -1]);
 }
 
 /***************************************************************
@@ -2283,11 +2303,11 @@ void MainWindow::on_plotButtonSensor_1_clicked()
 {
     o2_series->remove(0);
 
-        QDateTime start = QDateTime::currentDateTime();
-    o2_series->append(start.toMSecsSinceEpoch() + 5000, randInt());
-    o2_series->append(start.toMSecsSinceEpoch() + 6000, randInt());
-    o2_series->append(start.toMSecsSinceEpoch() + 7000, randInt());
-    o2_series->append(start.toMSecsSinceEpoch() + 8000, randInt());
+        QDateTime start01 = QDateTime::currentDateTime();
+    o2_series->append(start01.toMSecsSinceEpoch() + 5000, randInt());
+    o2_series->append(start01.toMSecsSinceEpoch() + 6000, randInt());
+    o2_series->append(start01.toMSecsSinceEpoch() + 7000, randInt());
+    o2_series->append(start01.toMSecsSinceEpoch() + 8000, randInt());
 
     qDebug() << "plot button";
 }

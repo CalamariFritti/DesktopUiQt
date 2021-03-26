@@ -276,7 +276,7 @@ Sensor 2</string>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -1615,6 +1615,11 @@ font-size: 30;</string>
         </property>
         <item>
          <property name="text">
+          <string>port0.</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
           <string>port1.</string>
          </property>
         </item>
@@ -1636,11 +1641,6 @@ font-size: 30;</string>
         <item>
          <property name="text">
           <string>port5.</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>port6.</string>
          </property>
         </item>
        </widget>

@@ -201,7 +201,18 @@ private:
     QLineSeries *co2_series;
     QLineSeries *ph_series;
 
+    QDateTimeAxis *axisX;
+    QValueAxis *axisY;
+
+    QDateTimeAxis *co2_axisX;
+    QValueAxis *co2_axisY;
+
+    QDateTimeAxis *ph_axisX;
+    QValueAxis *ph_axisY;
+
     QVector<double> qv_o2_1, qv_o2_2, qv_co2_1, qv_co2_2, qv_ph_1, qv_ph_2;
+
+    QDateTime start;
 
     // for raw log file values
     QList<QString> raw_o2_1, raw_o2_2, raw_co2_1, raw_co2_2, raw_ph_1, raw_ph_2;
