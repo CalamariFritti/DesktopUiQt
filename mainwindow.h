@@ -25,6 +25,7 @@
 #include <QInputDialog>
 
 #include "dialog.h"
+#include "sensors.h"
 
 QT_CHARTS_USE_NAMESPACE
 
