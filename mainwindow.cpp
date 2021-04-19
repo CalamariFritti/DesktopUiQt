@@ -143,6 +143,7 @@ void MainWindow::rawVectorInit()
 
 void MainWindow::setupGraphs()
 {
+
     o2_chart = new QChart();
     co2_chart = new QChart();
     ph_chart = new QChart();
@@ -310,140 +311,6 @@ void MainWindow::setupSensors()
         i.next();
     }
 
-/*
-
-    // setup ports to output mode 0001 -> sending only on request ("data<CR>")
-
-    port_0.open(QSerialPort::ReadWrite);
-     qDebug() << "first open sets open:" << port_0.isOpen();
-    port_0.setBaudRate(QSerialPort::Baud19200);     // default for presens EOM
-    qDebug() << "baud set to 19200";
-    port_0.setDataBits(QSerialPort::Data8);         // default for presens EOM
-    qDebug() << "Data8 set";
-    port_0.setFlowControl(QSerialPort::NoFlowControl);  // default for presens EOM
-    qDebug() << "noFlow Contr set";
-    port_0.setParity(QSerialPort::NoParity);            // default for presens EOM
-    qDebug() << "no parity set";
-    port_0.setStopBits(QSerialPort::OneStop);           // default for presens EOM
-    qDebug() << "onestop set";
-
-    port_0.open(QSerialPort::ReadWrite);
-    qDebug() << "is the port really open?" << port_0.isOpen();
-    port_0.write(out);
-    qDebug() << out;
-    qDebug() << "port_0 in mode 0001";
-    qDebug() << "------------------------------------------------------------------";
-    qDebug() << "is closed: " << port_0.isOpen();
-
-    // port 1
-
-    port_1.open(QSerialPort::ReadWrite);
-    qDebug() << "open, set to ReadWrite";
-    port_1.setBaudRate(QSerialPort::Baud19200);     // default for presens EOM
-    qDebug() << "baud set to 19200";
-    port_1.setDataBits(QSerialPort::Data8);         // default for presens EOM
-    qDebug() << "Data8 set";
-    port_1.setFlowControl(QSerialPort::NoFlowControl);  // default for presens EOM
-    qDebug() << "noFlow Contr set";
-    port_1.setParity(QSerialPort::NoParity);            // default for presens EOM
-    qDebug() << "no parity set";
-    port_1.setStopBits(QSerialPort::OneStop);           // default for presens EOM
-    qDebug() << "onestop set";
-    port_1.open(QSerialPort::ReadWrite);
-    qDebug() << "is port_1 open?" << port_1.isOpen();
-    port_1.write(out);
-    qDebug() << "port_1 in mode 0001";
-    qDebug() << "------------------------------------------------------------------";
-
-    qDebug() << "is closed: " << port_1.isOpen();
-
-    // port 2
-
-    port_2.open(QSerialPort::ReadWrite);
-    qDebug() << "open, set to ReadWrite";
-    port_2.setBaudRate(QSerialPort::Baud19200);     // default for presens EOM
-    qDebug() << "baud set to 29200";
-    port_2.setDataBits(QSerialPort::Data8);         // default for presens EOM
-    qDebug() << "Data8 set";
-    port_2.setFlowControl(QSerialPort::NoFlowControl);  // default for presens EOM
-    qDebug() << "noFlow Contr set";
-    port_2.setParity(QSerialPort::NoParity);            // default for presens EOM
-    qDebug() << "no parity set";
-    port_2.setStopBits(QSerialPort::OneStop);           // default for presens EOM
-    qDebug() << "onestop set";
-    port_2.open(QSerialPort::ReadWrite);
-    qDebug() << "is port_2 open?" << port_2.isOpen();
-    port_2.write(out);
-    qDebug() << "port_2 in mode 0002";
-    qDebug() << "------------------------------------------------------------------";
-
-    qDebug() << "is closed: " << port_2.isOpen();
-
-    // port 3
-
-    port_3.open(QSerialPort::ReadWrite);
-    qDebug() << "open, set to ReadWrite";
-    port_3.setBaudRate(QSerialPort::Baud19200);     // default for presens EOM
-    qDebug() << "baud set to 19200";
-    port_3.setDataBits(QSerialPort::Data8);         // default for presens EOM
-    qDebug() << "Data8 set";
-    port_3.setFlowControl(QSerialPort::NoFlowControl);  // default for presens EOM
-    qDebug() << "noFlow Contr set";
-    port_3.setParity(QSerialPort::NoParity);            // default for presens EOM
-    qDebug() << "no parity set";
-    port_3.setStopBits(QSerialPort::OneStop);           // default for presens EOM
-    qDebug() << "onestop set";
-    port_3.open(QSerialPort::ReadWrite);
-    qDebug() << "is port_3 open?" << port_3.isOpen();
-    port_3.write(out);
-    qDebug() << "port_3 in mode 0001";
-    qDebug() << "------------------------------------------------------------------";
-
-    qDebug() << "is closed: " << port_3.isOpen();
-
-    // port 4
-
-    port_4.open(QSerialPort::ReadWrite);
-    qDebug() << "open, set to ReadWrite";
-    port_4.setBaudRate(QSerialPort::Baud19200);     // default for presens EOM
-    qDebug() << "baud set to 19200";
-    port_4.setDataBits(QSerialPort::Data8);         // default for presens EOM
-    qDebug() << "Data8 set";
-    port_4.setFlowControl(QSerialPort::NoFlowControl);  // default for presens EOM
-    qDebug() << "noFlow Contr set";
-    port_4.setParity(QSerialPort::NoParity);            // default for presens EOM
-    qDebug() << "no parity set";
-    port_4.setStopBits(QSerialPort::OneStop);           // default for presens EOM
-    qDebug() << "onestop set";
-    port_4.open(QSerialPort::ReadWrite);
-    qDebug() << "is port_4 open?" << port_4.isOpen();
-    port_4.write(out);
-    qDebug() << "port_4 in mode 0001";
-    qDebug() << "------------------------------------------------------------------";
-
-    qDebug() << "true -> open; false -> closed: " << port_4.isOpen();
-
-    // port 5
-
-    port_5.open(QSerialPort::ReadWrite);
-    qDebug() << "open, set to ReadWrite";
-    port_5.setBaudRate(QSerialPort::Baud19200);     // default for presens EOM
-    qDebug() << "baud set to 19200";
-    port_5.setDataBits(QSerialPort::Data8);         // default for presens EOM
-    qDebug() << "Data8 set";
-    port_5.setFlowControl(QSerialPort::NoFlowControl);  // default for presens EOM
-    qDebug() << "noFlow Contr set";
-    port_5.setParity(QSerialPort::NoParity);            // default for presens EOM
-    qDebug() << "no parity set";
-    port_5.setStopBits(QSerialPort::OneStop);           // default for presens EOM
-    qDebug() << "onestop set";
-    port_5.open(QSerialPort::ReadWrite);
-    qDebug() << "is port_5 open?" << port_5.isOpen();
-    port_5.write(out);
-    qDebug() << "port_5 in mode 0001";
-    qDebug() << "------------------------------------------------------------------";
-    qDebug() << "is closed: " << port_5.isOpen();
-*/
 }
 
 void MainWindow::setHardwareAddressToId()
