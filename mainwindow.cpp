@@ -66,7 +66,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setupGraphs();
 
-    Sensors * ont = new Sensors();
+    Sensor * ont = new Sensor();
 
     // wait for 10 seconds to make sure the sensors are started
 //  delay(10);

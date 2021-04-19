@@ -27,14 +27,12 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     dialog.cpp \
-    sensor.cpp \
-    sensors.cpp
+    sensor.cpp
 
 HEADERS += \
         mainwindow.h \
     dialog.h \
-    sensor.h \
-    sensors.h
+    sensor.h
 
 FORMS += \
         mainwindow.ui \
