@@ -71,6 +71,12 @@
      <height>50</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QCheckBox::indicator {
+     width: 32px;
+     height: 32px;
+}</string>
+   </property>
    <property name="text">
     <string>O2-Sensor 01 inaktiv </string>
    </property>
@@ -100,6 +106,12 @@
      <height>50</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QCheckBox::indicator {
+     width: 32px;
+     height: 32px;
+}</string>
+   </property>
    <property name="text">
     <string>CO2-Sensor 01 inaktiv </string>
    </property>
@@ -112,6 +124,12 @@
      <width>180</width>
      <height>50</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QCheckBox::indicator {
+     width: 32px;
+     height: 32px;
+}</string>
    </property>
    <property name="text">
     <string>pH-Sensor 01 inaktiv </string>
@@ -142,6 +160,12 @@
      <height>50</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QCheckBox::indicator {
+     width: 32px;
+     height: 32px;
+}</string>
+   </property>
    <property name="text">
     <string>O2-Sensor 02 inaktiv </string>
    </property>
@@ -171,8 +195,20 @@
      <height>50</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QCheckBox::indicator {
+     width: 32px;
+     height: 32px;
+}</string>
+   </property>
    <property name="text">
     <string>CO2-Sensor 02 inaktiv </string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
@@ -199,6 +235,12 @@
      <width>180</width>
      <height>50</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QCheckBox::indicator {
+     width: 32px;
+     height: 32px;
+}</string>
    </property>
    <property name="text">
     <string>pH-Sensor 02 inaktiv </string>

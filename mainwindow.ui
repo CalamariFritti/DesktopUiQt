@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QTabBar::tab { height: 60
+     <string notr="true">QTabBar::tab { height: 80
 px; width: 120px; font-size: 12pt; };</string>
     </property>
     <property name="tabPosition">
@@ -276,7 +276,7 @@ Sensor 2</string>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -286,7 +286,7 @@ Sensor 2</string>
         <property name="geometry">
          <rect>
           <x>253</x>
-          <y>76</y>
+          <y>66</y>
           <width>220</width>
           <height>55</height>
          </rect>
@@ -299,7 +299,7 @@ Sensor 2</string>
         <property name="geometry">
          <rect>
           <x>43</x>
-          <y>10</y>
+          <y>0</y>
           <width>171</width>
           <height>60</height>
          </rect>
@@ -319,7 +319,7 @@ font-size: 30;</string>
         <property name="geometry">
          <rect>
           <x>43</x>
-          <y>140</y>
+          <y>130</y>
           <width>171</width>
           <height>55</height>
          </rect>
@@ -339,7 +339,7 @@ font-size: 30;</string>
         <property name="geometry">
          <rect>
           <x>253</x>
-          <y>260</y>
+          <y>250</y>
           <width>220</width>
           <height>55</height>
          </rect>
@@ -352,7 +352,7 @@ font-size: 30;</string>
         <property name="geometry">
          <rect>
           <x>253</x>
-          <y>200</y>
+          <y>190</y>
           <width>220</width>
           <height>55</height>
          </rect>
@@ -365,7 +365,7 @@ font-size: 30;</string>
         <property name="geometry">
          <rect>
           <x>253</x>
-          <y>320</y>
+          <y>310</y>
           <width>220</width>
           <height>55</height>
          </rect>
@@ -378,7 +378,7 @@ font-size: 30;</string>
         <property name="geometry">
          <rect>
           <x>43</x>
-          <y>76</y>
+          <y>66</y>
           <width>171</width>
           <height>55</height>
          </rect>
@@ -398,7 +398,7 @@ font-size: 30;</string>
         <property name="geometry">
          <rect>
           <x>43</x>
-          <y>200</y>
+          <y>190</y>
           <width>171</width>
           <height>55</height>
          </rect>
@@ -418,7 +418,7 @@ font-size: 30;</string>
         <property name="geometry">
          <rect>
           <x>253</x>
-          <y>140</y>
+          <y>130</y>
           <width>220</width>
           <height>55</height>
          </rect>
@@ -431,7 +431,7 @@ font-size: 30;</string>
         <property name="geometry">
          <rect>
           <x>43</x>
-          <y>260</y>
+          <y>250</y>
           <width>171</width>
           <height>55</height>
          </rect>
@@ -451,7 +451,7 @@ font-size: 30;</string>
         <property name="geometry">
          <rect>
           <x>43</x>
-          <y>322</y>
+          <y>312</y>
           <width>171</width>
           <height>55</height>
          </rect>
@@ -471,7 +471,7 @@ font-size: 30;</string>
         <property name="geometry">
          <rect>
           <x>253</x>
-          <y>10</y>
+          <y>0</y>
           <width>220</width>
           <height>60</height>
          </rect>
@@ -484,7 +484,7 @@ font-size: 30;</string>
         <property name="geometry">
          <rect>
           <x>560</x>
-          <y>340</y>
+          <y>330</y>
           <width>90</width>
           <height>30</height>
          </rect>
@@ -515,7 +515,7 @@ font-size: 30;</string>
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>10</y>
+          <y>0</y>
           <width>541</width>
           <height>371</height>
          </rect>
@@ -526,10 +526,10 @@ font-size: 30;</string>
            <widget class="QPushButton" name="set_f1_button">
             <property name="geometry">
              <rect>
-              <x>3</x>
+              <x>0</x>
               <y>0</y>
               <width>300</width>
-              <height>51</height>
+              <height>50</height>
              </rect>
             </property>
             <property name="sizePolicy">
@@ -652,7 +652,7 @@ font-size: 30;</string>
               <x>0</x>
               <y>0</y>
               <width>300</width>
-              <height>51</height>
+              <height>50</height>
              </rect>
             </property>
             <property name="sizePolicy">
@@ -790,7 +790,7 @@ font-size: 30;</string>
               <x>0</x>
               <y>0</y>
               <width>300</width>
-              <height>51</height>
+              <height>50</height>
              </rect>
             </property>
             <property name="sizePolicy">
@@ -983,198 +983,283 @@ font-size: 30;</string>
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>10</y>
-          <width>521</width>
-          <height>351</height>
+          <y>0</y>
+          <width>541</width>
+          <height>371</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
           <widget class="QWidget" name="lmax_calibration_12" native="true">
-           <layout class="QHBoxLayout" name="horizontalLayout_13">
-            <item>
-             <widget class="QPushButton" name="set_A1_button">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>1</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Setze A1-Wert für co2-Sensor</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QTextBrowser" name="A1_textbrowser"/>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_18">
-              <property name="font">
-               <font>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>-</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <widget class="QPushButton" name="set_A1_button">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>300</width>
+              <height>50</height>
+             </rect>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>1</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Setze A1-Wert für co2-Sensor</string>
+            </property>
+           </widget>
+           <widget class="QTextBrowser" name="A1_textbrowser">
+            <property name="geometry">
+             <rect>
+              <x>305</x>
+              <y>9</y>
+              <width>200</width>
+              <height>33</height>
+             </rect>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_18">
+            <property name="geometry">
+             <rect>
+              <x>509</x>
+              <y>9</y>
+              <width>16</width>
+              <height>19</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>-</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
           </widget>
          </item>
          <item>
           <widget class="QWidget" name="lmax_calibration_13" native="true">
-           <layout class="QHBoxLayout" name="horizontalLayout_14">
-            <item>
-             <widget class="QPushButton" name="set_A2_button">
-              <property name="enabled">
-               <bool>true</bool>
-              </property>
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
-                <horstretch>1</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Setze A2-Wert für co2-Sensor</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QTextBrowser" name="A2_textbrowser"/>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_19">
-              <property name="font">
-               <font>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>-</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <widget class="QPushButton" name="set_A2_button">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>300</width>
+              <height>50</height>
+             </rect>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+              <horstretch>1</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Setze A2-Wert für co2-Sensor</string>
+            </property>
+           </widget>
+           <widget class="QTextBrowser" name="A2_textbrowser">
+            <property name="geometry">
+             <rect>
+              <x>305</x>
+              <y>9</y>
+              <width>200</width>
+              <height>33</height>
+             </rect>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_19">
+            <property name="geometry">
+             <rect>
+              <x>509</x>
+              <y>9</y>
+              <width>16</width>
+              <height>19</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>-</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
           </widget>
          </item>
          <item>
           <widget class="QWidget" name="lmax_calibration_14" native="true">
-           <layout class="QHBoxLayout" name="horizontalLayout_15">
-            <item>
-             <widget class="QPushButton" name="set_x0_button">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>1</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Setze x0-Wert für co2-Sensor</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QTextBrowser" name="x0_textbrowser"/>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_20">
-              <property name="font">
-               <font>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>-</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <widget class="QPushButton" name="set_x0_button">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>300</width>
+              <height>50</height>
+             </rect>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>1</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Setze x0-Wert für co2-Sensor</string>
+            </property>
+           </widget>
+           <widget class="QTextBrowser" name="x0_textbrowser">
+            <property name="geometry">
+             <rect>
+              <x>305</x>
+              <y>9</y>
+              <width>200</width>
+              <height>33</height>
+             </rect>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_20">
+            <property name="geometry">
+             <rect>
+              <x>509</x>
+              <y>9</y>
+              <width>16</width>
+              <height>19</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>-</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
           </widget>
          </item>
          <item>
           <widget class="QWidget" name="lmax_calibration_15" native="true">
-           <layout class="QHBoxLayout" name="horizontalLayout_16">
-            <item>
-             <widget class="QPushButton" name="set_dx_button">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>1</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Setze dx-Wert für co2-Sensor</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QTextBrowser" name="dx_textbrowser"/>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_21">
-              <property name="font">
-               <font>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>-</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <widget class="QPushButton" name="set_dx_button">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>300</width>
+              <height>50</height>
+             </rect>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>1</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Setze dx-Wert für co2-Sensor</string>
+            </property>
+           </widget>
+           <widget class="QTextBrowser" name="dx_textbrowser">
+            <property name="geometry">
+             <rect>
+              <x>305</x>
+              <y>9</y>
+              <width>200</width>
+              <height>33</height>
+             </rect>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_21">
+            <property name="geometry">
+             <rect>
+              <x>509</x>
+              <y>9</y>
+              <width>16</width>
+              <height>19</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>-</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
           </widget>
          </item>
          <item>
           <widget class="QWidget" name="lmax_calibration_16" native="true">
-           <layout class="QHBoxLayout" name="horizontalLayout_17">
-            <item>
-             <widget class="QPushButton" name="set_temp_co2_button">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>1</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Setze Temperatur für co2-Sensor</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QTextBrowser" name="temp_co2_textbrowser"/>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_22">
-              <property name="font">
-               <font>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>-</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <widget class="QPushButton" name="set_temp_co2_button">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>300</width>
+              <height>50</height>
+             </rect>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>1</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Setze Temperatur für co2-Sensor</string>
+            </property>
+           </widget>
+           <widget class="QTextBrowser" name="temp_co2_textbrowser">
+            <property name="geometry">
+             <rect>
+              <x>305</x>
+              <y>9</y>
+              <width>200</width>
+              <height>33</height>
+             </rect>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_22">
+            <property name="geometry">
+             <rect>
+              <x>509</x>
+              <y>9</y>
+              <width>16</width>
+              <height>19</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>-</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
           </widget>
          </item>
         </layout>
@@ -1189,89 +1274,123 @@ font-size: 30;</string>
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>571</width>
-          <height>331</height>
+          <width>541</width>
+          <height>371</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
           <widget class="QWidget" name="lmax_calibration_8" native="true">
-           <layout class="QHBoxLayout" name="horizontalLayout_9">
-            <item>
-             <widget class="QPushButton" name="set_lmin_button">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                <horstretch>1</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Setze lmin-Wert für pH-Sensor</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QTextBrowser" name="lmin_textbrowser"/>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_13">
-              <property name="font">
-               <font>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>-</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <widget class="QPushButton" name="set_lmin_button">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>300</width>
+              <height>50</height>
+             </rect>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>1</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Setze lmin-Wert für pH-Sensor</string>
+            </property>
+           </widget>
+           <widget class="QTextBrowser" name="lmin_textbrowser">
+            <property name="geometry">
+             <rect>
+              <x>305</x>
+              <y>9</y>
+              <width>200</width>
+              <height>33</height>
+             </rect>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_13">
+            <property name="geometry">
+             <rect>
+              <x>509</x>
+              <y>9</y>
+              <width>16</width>
+              <height>19</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>-</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
           </widget>
          </item>
          <item>
           <widget class="QWidget" name="lmax_calibration_5" native="true">
-           <layout class="QHBoxLayout" name="horizontalLayout_6">
-            <item>
-             <widget class="QPushButton" name="set_lmax_button">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                <horstretch>1</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>85</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>Setze lmax-Wert für pH-Sensor</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QTextBrowser" name="lmax_textbrowser"/>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_14">
-              <property name="font">
-               <font>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>-</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <widget class="QPushButton" name="set_lmax_button">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>300</width>
+              <height>50</height>
+             </rect>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>1</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>85</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Setze lmax-Wert für pH-Sensor</string>
+            </property>
+           </widget>
+           <widget class="QTextBrowser" name="lmax_textbrowser">
+            <property name="geometry">
+             <rect>
+              <x>305</x>
+              <y>9</y>
+              <width>200</width>
+              <height>33</height>
+             </rect>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_14">
+            <property name="geometry">
+             <rect>
+              <x>509</x>
+              <y>9</y>
+              <width>16</width>
+              <height>19</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>-</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
           </widget>
          </item>
          <item>
@@ -1282,113 +1401,164 @@ font-size: 30;</string>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <layout class="QHBoxLayout" name="horizontalLayout_10">
-            <item>
-             <widget class="QPushButton" name="set_pH0_button">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                <horstretch>1</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Setze pH0-Wert für pH-Sensor</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QTextBrowser" name="pH0_textbrowser"/>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_15">
-              <property name="font">
-               <font>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>-</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <widget class="QPushButton" name="set_pH0_button">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>300</width>
+              <height>50</height>
+             </rect>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>1</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Setze pH0-Wert für pH-Sensor</string>
+            </property>
+           </widget>
+           <widget class="QTextBrowser" name="pH0_textbrowser">
+            <property name="geometry">
+             <rect>
+              <x>305</x>
+              <y>9</y>
+              <width>200</width>
+              <height>33</height>
+             </rect>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_15">
+            <property name="geometry">
+             <rect>
+              <x>509</x>
+              <y>9</y>
+              <width>16</width>
+              <height>19</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>-</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
           </widget>
          </item>
          <item>
           <widget class="QWidget" name="lmax_calibration_10" native="true">
-           <layout class="QHBoxLayout" name="horizontalLayout_11">
-            <item>
-             <widget class="QPushButton" name="set_dpH_button">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                <horstretch>1</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Setze dpH-Wert für pH-Sensor</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QTextBrowser" name="dpH_textbrowser"/>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_16">
-              <property name="font">
-               <font>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>-</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <widget class="QPushButton" name="set_dpH_button">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>300</width>
+              <height>50</height>
+             </rect>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>1</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Setze dpH-Wert für pH-Sensor</string>
+            </property>
+           </widget>
+           <widget class="QTextBrowser" name="dpH_textbrowser">
+            <property name="geometry">
+             <rect>
+              <x>305</x>
+              <y>9</y>
+              <width>200</width>
+              <height>33</height>
+             </rect>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_16">
+            <property name="geometry">
+             <rect>
+              <x>509</x>
+              <y>9</y>
+              <width>16</width>
+              <height>19</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>-</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
           </widget>
          </item>
          <item>
           <widget class="QWidget" name="lmax_calibration_11" native="true">
-           <layout class="QHBoxLayout" name="horizontalLayout_12">
-            <item>
-             <widget class="QPushButton" name="set_temp_button">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                <horstretch>1</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Setze Temperatur für pH-Sensor</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QTextBrowser" name="temp_textbrowser"/>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_17">
-              <property name="font">
-               <font>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>-</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <widget class="QPushButton" name="set_temp_button">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>300</width>
+              <height>50</height>
+             </rect>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>1</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Setze Temperatur für pH-Sensor</string>
+            </property>
+           </widget>
+           <widget class="QTextBrowser" name="temp_textbrowser">
+            <property name="geometry">
+             <rect>
+              <x>305</x>
+              <y>9</y>
+              <width>200</width>
+              <height>33</height>
+             </rect>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_17">
+            <property name="geometry">
+             <rect>
+              <x>509</x>
+              <y>9</y>
+              <width>16</width>
+              <height>19</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>-</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
           </widget>
          </item>
         </layout>
@@ -1417,6 +1587,71 @@ font-size: 30;</string>
         </property>
         <property name="text">
          <string>Quit</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_5">
+       <attribute name="title">
+        <string>-</string>
+       </attribute>
+       <widget class="QTextBrowser" name="textBrowser">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>130</y>
+          <width>601</width>
+          <height>192</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="comboBox_2">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>40</y>
+          <width>76</width>
+          <height>24</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>port0.</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>port1.</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>port2.</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>port3.</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>port4.</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>port5.</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>40</y>
+          <width>431</width>
+          <height>28</height>
+         </rect>
         </property>
        </widget>
       </widget>
@@ -1476,6 +1711,16 @@ font-size: 30;</string>
       </property>
       <property name="text">
        <string>Quit</string>
+      </property>
+     </widget>
+     <widget class="QChartView" name="lineGraph_o2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>680</width>
+        <height>400</height>
+       </rect>
       </property>
      </widget>
     </widget>
@@ -1585,6 +1830,16 @@ font-size: 30;</string>
        </property>
       </item>
      </widget>
+     <widget class="QChartView" name="lineGraph_co2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>680</width>
+        <height>400</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="pH">
      <attribute name="title">
@@ -1668,6 +1923,16 @@ font-size: 30;</string>
        <string>Zeige letzte:</string>
       </property>
      </widget>
+     <widget class="QChartView" name="lineGraph_ph">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>680</width>
+        <height>400</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -1682,6 +1947,13 @@ font-size: 30;</string>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QChartView</class>
+   <extends>QGraphicsView</extends>
+   <header>QtCharts</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
