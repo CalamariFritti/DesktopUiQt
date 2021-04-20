@@ -26,15 +26,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    dialog.cpp \
-    calibrationo2.cpp
+    dialog.cpp
 
 HEADERS += \
         mainwindow.h \
-    dialog.h \
-    calibrationo2.h
+    dialog.h
 
 FORMS += \
         mainwindow.ui \
-    dialog.ui \
-    calibrationo2.ui
+    dialog.ui
