@@ -1,8 +1,7 @@
 #include "mainwindow.h"
 #include "sensor.h"
 
-Sensor::Sensor(QWidget *parent) :
-    QSerialPort(parent)
+Sensor::Sensor(QObject * parent)
 {
 
 }

@@ -1915,6 +1915,9 @@ void MainWindow::get_sensor_value_port_0()
         qDebug() << value.toDouble();
         qv_ph_1.append(value.toDouble());
         input_buffer_port_0 = "";
+        if(raw_ph_1.size() > 1000){
+            raw_ph_1.removeFirst();
+        }
     }
 
 }
@@ -1942,6 +1945,9 @@ void MainWindow::get_sensor_value_port_1()
         qDebug() << value.toDouble();
         qv_co2_2.append(value.toDouble());
         input_buffer_port_1 = "";
+        if(raw_co2_2.size() > 1000){
+            raw_co2_2.removeFirst();
+        }
     }
 }
 
@@ -1969,6 +1975,9 @@ void MainWindow::get_sensor_value_port_2()
         qDebug() << value.toDouble();
         qv_ph_2.append(value.toDouble());
         input_buffer_port_2 = "";
+        if(raw_ph_2.size() > 1000){
+            raw_ph_2.removeFirst();
+        }
     }
 }
 
@@ -1995,6 +2004,9 @@ void MainWindow::get_sensor_value_port_3()
         qDebug() << value.toDouble();
         qv_o2_1.append(value.toDouble());
         input_buffer_port_3 = "";
+        if(raw_o2_1.size() > 1000){
+            raw_o2_1.removeFirst();
+        }
     }
 }
 
@@ -2020,6 +2032,9 @@ void MainWindow::get_sensor_value_port_4()
         qDebug() << value.toDouble();
         qv_co2_1.append(value.toDouble());
         input_buffer_port_4 = "";
+        if(raw_co2_1.size() > 1000){
+            raw_co2_1.removeFirst();
+        }
     }
 }
 

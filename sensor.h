@@ -8,7 +8,7 @@
 class Sensor : public QSerialPort
 {
 public:
-    explicit Sensor(QObject *parent = 0);
+    explicit Sensor(QObject * parent = 0);
 };
 
 #endif // SENSOR_H
