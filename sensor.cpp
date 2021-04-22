@@ -3,5 +3,8 @@
 
 Sensor::Sensor(QObject * parent)
 {
-
+    this->setBaudRate(preSensBaudRate);
+    this->setDataBits(preSensDataBits);
 }
+
+
