@@ -25,16 +25,17 @@ signals:
     void checkBox_5_toggled(bool);
 
 public slots:
+
+
+private slots:
+
+    void on_saveAndExit_pushButton_clicked();
     void on_checkBox_0_toggled(bool checked);
     void on_checkBox_1_toggled(bool checked);
     void on_checkBox_2_toggled(bool checked);
     void on_checkBox_3_toggled(bool checked);
     void on_checkBox_4_toggled(bool checked);
     void on_checkBox_5_toggled(bool checked);
-
-private slots:
-
-    void on_saveAndExit_pushButton_clicked();
 
 private:
     Ui::Dialog *ui;
