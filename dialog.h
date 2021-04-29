@@ -4,8 +4,9 @@
 #include <QDialog>
 #include <QObject>
 
-namespace Ui {
-class Dialog;
+namespace Ui
+{
+    class Dialog;
 }
 
 class Dialog : public QDialog

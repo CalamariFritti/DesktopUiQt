@@ -32,7 +32,8 @@ SOURCES += \
 HEADERS += \
         mainwindow.h \
     dialog.h \
-    sensor.h
+    sensor.h \
+    main.h
 
 FORMS += \
         mainwindow.ui \

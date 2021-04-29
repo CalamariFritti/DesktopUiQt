@@ -84,8 +84,6 @@ private slots:
 
         void setupSensors();
 
-        void setHardwareAddressToId();
-
         void startDialog();
 
         void setPreInit();
@@ -136,20 +134,8 @@ private slots:
 
         void on_set_temp_co2_button_clicked();
 
-        void getHwAdddress_port_0();
-        void getHwAdddress_port_1();
-        void getHwAdddress_port_2();
-        void getHwAdddress_port_3();
-        void getHwAdddress_port_4();
-        void getHwAdddress_port_5();
-
-        void setCorrectHarwareAddress_port_0(int arr[]);
-        void setCorrectHarwareAddress_port_1(int arr[]);
-        void setCorrectHarwareAddress_port_2(int arr[]);
-        void setCorrectHarwareAddress_port_3(int arr[]);
-        void setCorrectHarwareAddress_port_4(int arr[]);
-        void setCorrectHarwareAddress_port_5(int arr[]);
         void rawVectorInit();
+
         void on_lineEdit_returnPressed();
 
         void on_comboBox_2_currentTextChanged(const QString &arg1);
@@ -157,6 +143,7 @@ private slots:
         void on_lineEdit_cursorPositionChanged(int arg1, int arg2);
 
         void setupGraphs();
+
         void on_quitButtonSensor_1_clicked();
 
         void on_quitButtonSensor_2_clicked();
@@ -165,7 +152,6 @@ private slots:
 
         void on_plotButtonSensor_1_clicked();
 
-        int randInt();
         void append_to_plotSeries();
 
 private:

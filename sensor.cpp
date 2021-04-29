@@ -1,10 +1,14 @@
 #include "mainwindow.h"
 #include "sensor.h"
 
-Sensor::Sensor(QObject * parent)
+Sensor::Sensor(QString portName) :
+    QSerialPort()
 {
-    this->setBaudRate(preSensBaudRate);
-    this->setDataBits(preSensDataBits);
+    this->setPortName(portName);
 }
 
+Sensor::~Sensor()
+{
+    delete this;
+}
 

@@ -8,10 +8,10 @@
 class Sensor : public QSerialPort
 {
 public:
-    explicit Sensor(QObject * parent = 0);
+    explicit Sensor(QString portName);
+    ~Sensor();
 
 private:
-
     qint32 preSensBaudRate = 19200;
     DataBits preSensDataBits = Data8;
     FlowControl preSensFlowControl = NoFlowControl;

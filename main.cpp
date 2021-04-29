@@ -13,9 +13,11 @@ int main(int argc, char *argv[])
 //    w.setWindowState((Qt::WindowFullScreen));
     w.show();
 
-    Sensor * sens01 = new Sensor();
+    QString thisMaName = "thisMaName";
+    Sensor * sens01 = new Sensor(thisMaName);
 
     qDebug() << sens01->parity();
+    qDebug() << sens01->portName();
 
     return a.exec();
 }
