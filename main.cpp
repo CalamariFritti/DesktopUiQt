@@ -19,6 +19,9 @@ int main(int argc, char *argv[])
     qDebug() << sens01->parity();
     qDebug() << sens01->portName();
 
+    File * output = new File("/home/text.txt");
+
+
     return a.exec();
 }
 

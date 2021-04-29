@@ -26,6 +26,14 @@
  *
  */
 
+/*
+ *TODO:
+ *  plotting:
+ *      --> Neustart der Mesung muss plotseries leeren
+ *      --> 1h, 4h, 24h plotting
+ *      --> zwei plots in einer Grafik
+ *
+ */
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
