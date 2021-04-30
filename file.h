@@ -9,6 +9,7 @@ class File : public QFile
 {
 public:
     explicit File(QString filepath);
+    ~File();
 };
 
 #endif // FILE_H

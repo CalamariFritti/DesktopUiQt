@@ -26,6 +26,7 @@
 
 #include "dialog.h"
 #include "sensor.h"
+#include "file.h"
 
 QT_CHARTS_USE_NAMESPACE
 
