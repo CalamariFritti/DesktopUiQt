@@ -28,15 +28,20 @@ SOURCES += \
         mainwindow.cpp \
     dialog.cpp \
     sensor.cpp \
-    file.cpp
+    file.cpp \
+    keyboard.cpp
 
 HEADERS += \
         mainwindow.h \
     dialog.h \
     sensor.h \
     main.h \
-    file.h
+    file.h \
+    keyboard.h
 
 FORMS += \
         mainwindow.ui \
-    dialog.ui
+    dialog.ui \
+    keyboard.ui
+
+DISTFILES +=

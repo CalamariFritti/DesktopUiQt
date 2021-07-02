@@ -44,7 +44,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-
     ui->setupUi(this);
 
     setFontsizesAndBackgroundColors();
@@ -86,7 +85,8 @@ MainWindow::~MainWindow()
     port_4.close();
     port_5.close();
 
-    delete activation;
+    activation->~Dialog();
+    key->~Keyboard();
     delete ui;
 }
 
@@ -451,11 +451,26 @@ void MainWindow::on_initialize_sensor_5_button_clicked()
  ***/
 void MainWindow::on_set_f1_button_clicked()
 {
+/***
+*    double f1 = QInputDialog::getDouble(this,
+ *                                        "Sensorkonstante f1",
+  *                                       "Wert eingeben:",
+   *                                      0.808, -99.99999, 999.99999, 5);
+    ***/
+
+    Keyboard * key = new Keyboard(0, "0.808", "Bitte f1-Sensorwert eingeben:");
+//    key->setWindowFlags(Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint | Qt::X11BypassWindowManagerHint);
+//    key->setWindowState(Qt::WindowFullScreen);
+//    key->setWindowOpacity(0.5);
+    key->show();
+
+    QObject::connect(key, &Keyboard::pushButton_ok_clicked, this, &MainWindow::set_f1_value);
+}
+
+void MainWindow::set_f1_value(double f1)
+{
     int padUpTo = 8;        // eight digits for values > 0
-    double f1 = QInputDialog::getDouble(this,
-                                         "Sensorkonstante f1",
-                                         "Wert eingeben:",
-                                         0.808, -99.99999, 999.99999, 5);
+
     ui->f1_textbrowser->clear();
     ui->f1_textbrowser->append(QString::number(f1, 'f', 5));
 
@@ -570,9 +585,6 @@ void MainWindow::on_set_dPhi1_button_clicked()
     QString dPhi1_to_sensor = prepend + QString::number(dPhi1, 'f', 6).remove('.').remove('-').rightJustified(padUpTo, '0') + "\r";
     qDebug() << dPhi1_to_sensor;
     QByteArray out = dPhi1_to_sensor.toLatin1();
-
-
-    for(int i = 0; i < out.length(); i++){qDebug() << out[i];}
 
     if(sensor_0_is_available){
         port_3.write(out);
@@ -1489,6 +1501,7 @@ void MainWindow::get_sensor_value_port_0()
         input_buffer_port_0 = "";
         if(raw_ph_1.size() > 1000){
             raw_ph_1.removeFirst();
+            //TODO: sichtbar machen
         }
     }
 
@@ -1745,15 +1758,6 @@ void MainWindow::on_lineEdit_returnPressed()
     }
 }
 
-void MainWindow::on_comboBox_2_currentTextChanged(const QString &arg1)
-{
-
-}
-
-void MainWindow::on_lineEdit_cursorPositionChanged(int arg1, int arg2)
-{
-
-}
 
 void MainWindow::on_plotButtonSensor_1_clicked()
 {

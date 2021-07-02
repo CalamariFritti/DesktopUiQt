@@ -27,6 +27,7 @@
 #include "dialog.h"
 #include "sensor.h"
 #include "file.h"
+#include "keyboard.h"
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -43,6 +44,7 @@ public:
         explicit MainWindow(QWidget *parent = 0);
 
         Dialog *activaton;
+        Keyboard * key;
 
         QList<QSerialPort*> list_of_ports;
 
@@ -108,6 +110,9 @@ private slots:
         void on_quitButtonStartMain_2_clicked();
         void on_allSet_o2_clicked();
 
+        void set_f1_value(double);
+
+
     // inititalisation of ph-sensor
         void on_set_lmin_button_clicked();
         void on_set_lmax_button_clicked();
@@ -138,10 +143,6 @@ private slots:
         void rawVectorInit();
 
         void on_lineEdit_returnPressed();
-
-        void on_comboBox_2_currentTextChanged(const QString &arg1);
-
-        void on_lineEdit_cursorPositionChanged(int arg1, int arg2);
 
         void setupGraphs();
 

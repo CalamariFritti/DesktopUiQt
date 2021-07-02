@@ -31,24 +31,26 @@ px; width: 120px; font-size: 12pt; };</string>
      <enum>QTabWidget::West</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="general">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
      <attribute name="title">
       <string>Main</string>
      </attribute>
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>60</y>
-        <width>140</width>
-        <height>50</height>
+        <x>30</x>
+        <y>30</y>
+        <width>200</width>
+        <height>20</height>
        </rect>
       </property>
       <property name="text">
-       <string>O2 in mmHg
-Sensor 1</string>
+       <string>O2 in mmHg Sensor 1</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -57,14 +59,16 @@ Sensor 1</string>
      <widget class="QPushButton" name="pO2DisplayButton">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>110</y>
-        <width>140</width>
-        <height>70</height>
+        <x>30</x>
+        <y>50</y>
+        <width>200</width>
+        <height>130</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">.QWidget {
+background-color : transparent
+ }</string>
       </property>
       <property name="text">
        <string>&lt;none&gt;</string>
@@ -73,10 +77,10 @@ Sensor 1</string>
      <widget class="QPushButton" name="pCO2DisplayButton">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>110</y>
-        <width>140</width>
-        <height>70</height>
+        <x>240</x>
+        <y>50</y>
+        <width>200</width>
+        <height>130</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -89,15 +93,14 @@ Sensor 1</string>
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>60</y>
-        <width>140</width>
-        <height>50</height>
+        <x>240</x>
+        <y>30</y>
+        <width>200</width>
+        <height>20</height>
        </rect>
       </property>
       <property name="text">
-       <string>CO2 in mmHg
-Sensor 1</string>
+       <string>CO2 in mmHg Sensor 1</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -106,9 +109,9 @@ Sensor 1</string>
      <widget class="QPushButton" name="stopMeassurementButton">
       <property name="geometry">
        <rect>
-        <x>350</x>
+        <x>0</x>
         <y>380</y>
-        <width>141</width>
+        <width>671</width>
         <height>51</height>
        </rect>
       </property>
@@ -119,15 +122,14 @@ Sensor 1</string>
      <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
-        <x>470</x>
-        <y>60</y>
-        <width>140</width>
-        <height>50</height>
+        <x>450</x>
+        <y>30</y>
+        <width>200</width>
+        <height>20</height>
        </rect>
       </property>
       <property name="text">
-       <string>pH
-Sensor 1</string>
+       <string>pH Sensor 1</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -136,10 +138,10 @@ Sensor 1</string>
      <widget class="QPushButton" name="pHDisplayButton">
       <property name="geometry">
        <rect>
-        <x>470</x>
-        <y>110</y>
-        <width>140</width>
-        <height>70</height>
+        <x>450</x>
+        <y>50</y>
+        <width>200</width>
+        <height>130</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -152,10 +154,10 @@ Sensor 1</string>
      <widget class="QPushButton" name="pO2DisplayButton_2">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>270</y>
-        <width>140</width>
-        <height>70</height>
+        <x>30</x>
+        <y>231</y>
+        <width>200</width>
+        <height>130</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -168,15 +170,14 @@ Sensor 1</string>
      <widget class="QLabel" name="label_10">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>220</y>
-        <width>140</width>
-        <height>50</height>
+        <x>29</x>
+        <y>210</y>
+        <width>200</width>
+        <height>20</height>
        </rect>
       </property>
       <property name="text">
-       <string>O2 in mmHg
-Sensor 2</string>
+       <string>O2 in mmHg Sensor 2</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -185,15 +186,14 @@ Sensor 2</string>
      <widget class="QLabel" name="label_11">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>220</y>
-        <width>140</width>
-        <height>50</height>
+        <x>240</x>
+        <y>210</y>
+        <width>200</width>
+        <height>20</height>
        </rect>
       </property>
       <property name="text">
-       <string>CO2 in mmHg
-Sensor 2</string>
+       <string>CO2 in mmHg Sensor 2</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -202,10 +202,10 @@ Sensor 2</string>
      <widget class="QPushButton" name="pCO2DisplayButton_2">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>270</y>
-        <width>140</width>
-        <height>70</height>
+        <x>240</x>
+        <y>230</y>
+        <width>200</width>
+        <height>130</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -218,10 +218,10 @@ Sensor 2</string>
      <widget class="QPushButton" name="pHDisplayButton_2">
       <property name="geometry">
        <rect>
-        <x>470</x>
-        <y>270</y>
-        <width>140</width>
-        <height>70</height>
+        <x>450</x>
+        <y>230</y>
+        <width>200</width>
+        <height>130</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -234,31 +234,17 @@ Sensor 2</string>
      <widget class="QLabel" name="label_12">
       <property name="geometry">
        <rect>
-        <x>470</x>
-        <y>220</y>
-        <width>140</width>
-        <height>50</height>
+        <x>450</x>
+        <y>210</y>
+        <width>200</width>
+        <height>20</height>
        </rect>
       </property>
       <property name="text">
-       <string>pH
-Sensor 2</string>
+       <string>pH Sensor 2</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="quitButton">
-      <property name="geometry">
-       <rect>
-        <x>510</x>
-        <y>380</y>
-        <width>141</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Beenden</string>
       </property>
      </widget>
     </widget>
@@ -275,8 +261,11 @@ Sensor 2</string>
         <height>461</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
