@@ -1,0 +1,138 @@
+devices:
+    common: []
+    debug: []
+    release: []
+dockercomposefile:
+    common: ''
+    debug: ''
+    release: ''
+extraparms:
+    common: {}
+    debug: {}
+    release: {}
+id: 10940dc7-a3ba-4dbb-8b0c-70acbfe4839f
+images:
+    debug: sha256:d2716001be9f4a8e9437be72636ccdef87ac40cc3d791ef1ad592fdeaa5e6a49
+    release: ''
+imagetags:
+    debug: desktopuiqt_arm64v8-qt5-vivante-no-ssh_bullseye_debug_10940dc7-a3ba-4dbb-8b0c-70acbfe4839f
+    release: desktopuiqt_arm64v8-qt5-vivante-no-ssh_bullseye_release_10940dc7-a3ba-4dbb-8b0c-70acbfe4839f
+modificationdate: '2021-08-19T12:48:55.404784'
+networks:
+    common: []
+    debug: []
+    release: []
+platformid: arm64v8-qt5-vivante-no-ssh_bullseye
+ports:
+    common: {}
+    debug: {}
+    release: {}
+privatekey: '-----BEGIN RSA PRIVATE KEY-----
+
+    MIIEpAIBAAKCAQEA0b6jM7Qn3tR67RI8miU02iqLhYFExOs2MTfo2YhIrmMS9pRC
+
+    aVHigDbyy63+v0CkjYnXthA7kCjSqWJmSCylpvkmfpwlHmaxH1rVqN4ypwjK/0tR
+
+    u9drM0uDkaN1uZw1kEBHkhRjUcPijhkLBCZwhiFnsjTxOJP9wNq4lGSBqmI+HEIq
+
+    CgLy0vpN2IGLMN3F6gxdL1wIdUPXUSHLFZY3UeF0fV1bmgBGKfXhN9cTv6afUqqr
+
+    5Gchho6nNGxhyZBO2rJho4RV/hGIP0WcHSxVv8tp7Ci4YfRRwJRZgzK2yGjTehi1
+
+    RjtcJIewgPpr+2mk5mT0S5F/+nM/MiDFoqzLGwIDAQABAoIBAQCx1wJqBIcJ2P+h
+
+    o6Tezk1R7mD+gezdStJYSR+V0ohN1JNvn6Xvxw5VyEF1kcI+R4E+wXG1XW4jfXmh
+
+    RV2UNMcAHKEXGS4f6NKl0072L/Ci0EHO1P4oVy79/zk/c2mOR3TjKp2EruTHn1+p
+
+    PHKqwi0Gjaxu3ZTqdBDkRI/cwptu6vTOySOzB7sT4h1H+h+5HPfIzjjUmYYvSPHo
+
+    FgBOby7SkW36b+R8Eht5mxb43N7n+CwoSpBqZpnM8P6+25PwzYkcse37sdhPeGMv
+
+    JK2hdEOpsktAnVezJNudtCTDwxuxeL1RhekrJXP9/nowV6BbfT1tVQE0eGYRj1Sq
+
+    FEl9rIiBAoGBAO1F6JckXekdcmU0nY8R7VKR1GeOHqjBHt2eQttSg1AscOjXAfjo
+
+    cEM143c15zAK85+xe+A5Yn82Q92JpRRvIDy1Z2ec/u4Fa76S+K8lRdF3svr9WqGD
+
+    yQdzD++0YTJj8pSaSgoLScs85LMe5U1IfyuznJlb1WBO0xCakiooUSttAoGBAOJM
+
+    hNS9MrhaEWAUfNO2SMC3Dr9Kni5ZoXf2NOtRolutEU7IfsWiDYHngr9rxOFARrKG
+
+    d+CUSFsEsCkyp6rDLMziKiA4Dlf4Rp0wuUvhaOOGuQciN0+fmpmto1xbIPsL/Nkt
+
+    x3g3jypIVbPTEufE/H3eANMwoWQ/+2h8Y9aV5fOnAoGBAJKkejOvTjsc7+6MrjQW
+
+    KE63wkaeF2TEtobRoRBb1rxeOwosmBN11Kw1SfgLYG7Y1ekEkELsNGva5eatg1E1
+
+    vP7IPrhS11vUDdsiin/00Um8aOmmW7Um9b+c5WSIXun9y5b8JHZAs8LgR5hMp/sz
+
+    qyUfRNGjaCS1kszYOy3C7SehAoGABVBssh47Sa77x3jTsZkPPk9OLlnPOyFptEp4
+
+    1anWGTcIOARnTbbPgGRyYpJiTjPXNSwJNqHkzRZgGKeS3mS08Z7CBH2sgI5ZAin5
+
+    v/lsICOyxqMcD2edFszIEEwnix2t81+q1nzfhMusD4v+Xqj2kPIcrNjwgU0rVznM
+
+    kmZ0vvMCgYBh9UnOeo3volqjf85nU/An0mVVHOyd/C0K2s6/nNk3oXLgYHNcvIya
+
+    r7PEqwhWwHsOO90ztGfJJAmsufV7+BHA7InyLfWoAsvn2TXoyErBQnJeB7HSQSBB
+
+    eun530s5GbkM1G1bhzD/y1KSvdgWV/MJoRfM0KlhVwtvzLNKMP8DNA==
+
+    -----END RSA PRIVATE KEY-----
+
+    '
+props:
+    common:
+        appname: desktopuiqt
+        arg: ''
+        buildcommands: RUN usermod -a -G dialout torizon
+        buildfiles: ''
+        command: ''
+        devpackages: qtdeclarative5-dev:#%platform.debian-arch%# libegl-dev:#%platform.debian-arch%#
+            libgl-dev:#%platform.debian-arch%# libqt5serialport5-dev:#%platform.debian-arch%#
+            libqt5charts5-dev:#%platform.debian-arch%# libqt5svg5-dev:#%platform.debian-arch%#
+            qtquickcontrols2-5-dev:#%platform.debian-arch%#
+        env: ''
+        exename: usr/bin/DesktopTest
+        expose: ''
+        extrapackages: qml-module-qtquick2 qml-module-qtquick-window2 qml-module-qtquick-controls
+            qml-module-qtquick-controls2 libqt5serialport5 libqt5widgets5 libqt5quickwidgets5
+            libqt5charts5 qml-module-qtcharts libqt5svg5 libqt5quickcontrols2-5 qml-module-qt-labs-settings
+            qml-module-qtquick-dialogs qml-module-qtpositioning qml-module-qtlocation
+            qml-module-qt-labs-location libqt5charts5
+        language: c-cpp-nossh
+        preinstallcommands: ''
+        sdkpostinstallcommands: ''
+        sdkpreinstallcommands: ''
+        targetcommands: ''
+        targetfiles: ''
+    debug:
+        arg: 'ARG SSHUSERNAME=#%application.username%#
+
+            '
+    release: {}
+publickey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRvqMztCfe1HrtEjyaJTTaKouFgUTE6zYxN+jZiEiuYxL2lEJpUeKANvLLrf6/QKSNide2EDuQKNKpYmZILKWm+SZ+nCUeZrEfWtWo3jKnCMr/S1G712szS4ORo3W5nDWQQEeSFGNRw+KOGQsEJnCGIWeyNPE4k/3A2riUZIGqYj4cQioKAvLS+k3YgYsw3cXqDF0vXAh1Q9dRIcsVljdR4XR9XVuaAEYp9eE31xO/pp9SqqvkZyGGjqc0bGHJkE7asmGjhFX+EYg/RZwdLFW/y2nsKLhh9FHAlFmDMrbIaNN6GLVGO1wkh7CA+mv7aaTmZPRLkX/6cz8yIMWirMsb
+sdkimages:
+    debug: sha256:0982992d34707c815f5f2fa47a888ec78059f9943fd3cc27144a7077954081ee
+    release: sha256:0982992d34707c815f5f2fa47a888ec78059f9943fd3cc27144a7077954081ee
+sdkimagetags:
+    debug: desktopuiqt_arm64v8-qt5-vivante-no-ssh_bullseye_debug_10940dc7-a3ba-4dbb-8b0c-70acbfe4839f_sdk_image
+    release: desktopuiqt_arm64v8-qt5-vivante-no-ssh_bullseye_release_10940dc7-a3ba-4dbb-8b0c-70acbfe4839f_sdk_image
+sdksshaddress:
+    debug: null
+    release: null
+shutdownscript:
+    common: ''
+    debug: ''
+    release: ''
+startupscript:
+    common: ''
+    debug: ''
+    release: ''
+username: torizon
+volumes:
+    common: {}
+    debug:
+        /home/torizon/desktopuiqt: /desktopuiqt,rw
+    release: {}

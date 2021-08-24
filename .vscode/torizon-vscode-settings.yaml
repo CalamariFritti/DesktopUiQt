@@ -1,0 +1,24 @@
+label: Qt Widgets sample
+detail: '$(multiple-windows) Creates a basic Qt sample, with widget-based UI'
+tags:
+  - qt
+env:
+  AR: '%{torizon.prefix}ar'
+  AS: '%{torizon.prefix}as'
+  CC: '%{torizon.prefix}gcc'
+  CXX: '%{torizon.prefix}g++'
+  CPP: '%{torizon.prefix}cpp'
+  STRIP: '%{torizon.prefix}strip'
+  LD: '%{torizon.prefix}ld'
+  CROSS_COMPILE: '%{torizon.prefix}'
+  QMAKE: '%{torizon.prefix}qmake'
+  QT_INCLUDES: '%{torizon.qt-includepath}'
+checkfiles:
+  - ^.*\.(pro)$
+properties:
+  props:
+    common:
+      extrapackages: libqt5widgets5
+    debug: {}
+    release: {}
+extversion: 1.3.0
