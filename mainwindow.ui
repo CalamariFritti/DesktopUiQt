@@ -31,7 +31,7 @@ px; width: 120px; font-size: 12pt; };</string>
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="general">
        <property name="minimumSize">
@@ -306,8 +306,8 @@ background-color : transparent
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>681</width>
-          <height>461</height>
+          <width>1141</width>
+          <height>751</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -1312,8 +1312,8 @@ font-size: 30;</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>541</width>
-            <height>371</height>
+            <width>571</width>
+            <height>601</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1325,14 +1325,20 @@ font-size: 30;</string>
                 <x>0</x>
                 <y>0</y>
                 <width>300</width>
-                <height>50</height>
+                <height>110</height>
                </rect>
               </property>
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                <horstretch>1</horstretch>
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>110</height>
+               </size>
               </property>
               <property name="text">
                <string>Setze lmin-Wert für pH-Sensor</string>
@@ -1341,8 +1347,8 @@ font-size: 30;</string>
              <widget class="QTextBrowser" name="lmin_textbrowser">
               <property name="geometry">
                <rect>
-                <x>305</x>
-                <y>9</y>
+                <x>310</x>
+                <y>40</y>
                 <width>200</width>
                 <height>33</height>
                </rect>
@@ -1351,8 +1357,8 @@ font-size: 30;</string>
              <widget class="QLabel" name="label_13">
               <property name="geometry">
                <rect>
-                <x>509</x>
-                <y>9</y>
+                <x>520</x>
+                <y>40</y>
                 <width>16</width>
                 <height>19</height>
                </rect>
