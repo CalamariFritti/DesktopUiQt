@@ -73,3 +73,5 @@ DISTFILES +=
 
 
 DESTDIR = $$(QMAKE_DESTIDIR)
+RESOURCES += \
+    ressources.qrc
