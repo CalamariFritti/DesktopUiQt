@@ -64,6 +64,8 @@ MainWindow::MainWindow(QWidget *parent) :
     setPreInit();
 
     startDialog();
+
+    startStorageReader();
 }
 
 MainWindow::~MainWindow()
@@ -96,6 +98,16 @@ void MainWindow::delay(int seconds)
     while (QTime::currentTime() < dieTime)
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
+
+void MainWindow::startStorageReader(){
+    QStorageInfo storage = QStorageInfo::root();
+    qDebug() << "Storage avaiable: " << storage.rootPath();
+    //byte to GB conversion
+    qint64 storAvailable = storage.bytesAvailable()/1024/1024/1024;
+    QString stor = QString::number(storAvailable) + " GB";
+    ui->memoryValueButton->setText(stor);
+}
+
 /********************************
  *
  * edits stylesheets of various ui elements
@@ -224,7 +236,15 @@ void MainWindow::setupGraphs()
 
 
 }
+/*
+void MainWindow::setupSensor485()
+{
+    QSerialPort port485;
 
+    port485.setPortName("TODO_hw_address_for_RS485");
+
+}
+*/
 void MainWindow::setupSensors()
 {
     QString turn_off_sensors = "mode0001\r";
@@ -1376,7 +1396,7 @@ void MainWindow::on_start_measurement_button_clicked()
         write_to_file(filepath);
         write_to_file_raw(raw_filepath);
         append_to_plotSeries();
-
+        startStorageReader();
     });
 
     timer_for_output->start(1000);
