@@ -1,39 +1,3 @@
-/*
- * Sensor an Hardware belegung:
- * pO2-Sensor_1 an Hardware-Pfad /dev/ttyUSB3 -> initialisierung als port_3 --> NEU: /dev/ttyUSB4
- * pO2-Sensor_2 an Hardware-Pfad /dev/ttyUSB5 -> initialisierung als port_5 --> NEU: /dev/ttyUSB2
- *
- * pCO2-Sensor_1 an Hardware-Pfad /dev/ttyUSB4 -> initialisierung als port_4 --> NEU: /dev/ttyUSB0
- * pCO2-Sensor_2 an Hardware-Pfad /dev/ttyUSB1 -> initialisierung als port_1 --> NEU: /dev/ttyUSB5
- *
- *
- * ph-Sensor_1 an Hardware-Pfad /dev/ttyUSB0 -> initialisierung als port_0 --> NEU: /dev/ttyUSB1
- * ph-Sensor_2 an Hardware-Pfad /dev/ttyUSB2 -> initialisierung als port_2 --> NEU: /dev/ttyUSB3
- *
- * 04.11.2020, Dresden:
- * PCO2-Sensor 1 --> N03    ttyUSB0 --> port_4
- *
- * pH-Sensor 1   --> N05    ttyUSB1 --> port_0
- *
- * ttyUSB2 -> PO2-Sensor 2  --> N02 --> port_5
- *
- * ttyUSB3 -> pH-Sensor 2 --> N06 --> port_2
- *
- * ttyUSB4 -> PO2-Sensor 1  --> N01 --> port_3
- *
- * ttyUSB5 -> PCO2-Sensor 2 --> N04 --> port_1
- *
- *
- */
-
-/*
- *TODO:
- *  plotting:
- *      --> Neustart der Mesung muss plotseries leeren
- *      --> 1h, 4h, 24h plotting
- *      --> zwei plots in einer Grafik
- *
- */
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"

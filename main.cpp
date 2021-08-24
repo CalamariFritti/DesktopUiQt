@@ -9,8 +9,8 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     MainWindow w;
-//    w.setWindowFlags(Qt::FramelessWindowHint);
-//    w.setWindowState((Qt::WindowFullScreen));
+    w.setWindowFlags(Qt::FramelessWindowHint);
+    w.setWindowState((Qt::WindowFullScreen));
     w.show();
 
     QString thisMaName = "thisMaName";
