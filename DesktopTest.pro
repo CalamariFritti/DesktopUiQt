@@ -45,3 +45,6 @@ FORMS += \
     keyboard.ui
 
 DISTFILES +=
+
+RESOURCES += \
+    ressources.qrc

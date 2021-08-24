@@ -24,6 +24,7 @@
 #include <QStyleOptionTab>
 #include <QInputDialog>
 
+
 #include "dialog.h"
 #include "sensor.h"
 #include "file.h"
@@ -155,6 +156,8 @@ private slots:
         void on_plotButtonSensor_1_clicked();
 
         void append_to_plotSeries();
+
+        void startStorageReader();
 
 private:
     Ui::MainWindow *ui;
