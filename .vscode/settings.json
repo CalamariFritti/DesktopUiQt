@@ -1,4 +1,4 @@
 {
-    "torizon.configuration": "debug",
+    "torizon.configuration": "release",
     "torizon.appfolder": "appconfig_0"
 }

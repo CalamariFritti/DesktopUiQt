@@ -342,7 +342,7 @@ public:
         start->setObjectName(QString::fromUtf8("start"));
         tabWidget_2 = new QTabWidget(start);
         tabWidget_2->setObjectName(QString::fromUtf8("tabWidget_2"));
-        tabWidget_2->setGeometry(QRect(0, 0, 681, 461));
+        tabWidget_2->setGeometry(QRect(0, 0, 1141, 751));
         tabWidget_2->setStyleSheet(QString::fromUtf8(""));
         tab = new QWidget();
         tab->setObjectName(QString::fromUtf8("tab"));
@@ -665,7 +665,7 @@ public:
         tab_4->setObjectName(QString::fromUtf8("tab_4"));
         widget_2 = new QWidget(tab_4);
         widget_2->setObjectName(QString::fromUtf8("widget_2"));
-        widget_2->setGeometry(QRect(0, 0, 541, 371));
+        widget_2->setGeometry(QRect(0, 0, 571, 601));
         verticalLayout_2 = new QVBoxLayout(widget_2);
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -674,18 +674,19 @@ public:
         lmax_calibration_8->setObjectName(QString::fromUtf8("lmax_calibration_8"));
         set_lmin_button = new QPushButton(lmax_calibration_8);
         set_lmin_button->setObjectName(QString::fromUtf8("set_lmin_button"));
-        set_lmin_button->setGeometry(QRect(0, 0, 300, 50));
-        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy3.setHorizontalStretch(1);
+        set_lmin_button->setGeometry(QRect(0, 0, 300, 110));
+        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy3.setHorizontalStretch(0);
         sizePolicy3.setVerticalStretch(0);
         sizePolicy3.setHeightForWidth(set_lmin_button->sizePolicy().hasHeightForWidth());
         set_lmin_button->setSizePolicy(sizePolicy3);
+        set_lmin_button->setMinimumSize(QSize(0, 110));
         lmin_textbrowser = new QTextBrowser(lmax_calibration_8);
         lmin_textbrowser->setObjectName(QString::fromUtf8("lmin_textbrowser"));
-        lmin_textbrowser->setGeometry(QRect(305, 9, 200, 33));
+        lmin_textbrowser->setGeometry(QRect(310, 40, 200, 33));
         label_13 = new QLabel(lmax_calibration_8);
         label_13->setObjectName(QString::fromUtf8("label_13"));
-        label_13->setGeometry(QRect(509, 9, 16, 19));
+        label_13->setGeometry(QRect(520, 40, 16, 19));
         label_13->setFont(font1);
         label_13->setAlignment(Qt::AlignCenter);
 
@@ -696,8 +697,11 @@ public:
         set_lmax_button = new QPushButton(lmax_calibration_5);
         set_lmax_button->setObjectName(QString::fromUtf8("set_lmax_button"));
         set_lmax_button->setGeometry(QRect(0, 0, 300, 50));
-        sizePolicy3.setHeightForWidth(set_lmax_button->sizePolicy().hasHeightForWidth());
-        set_lmax_button->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy4.setHorizontalStretch(1);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(set_lmax_button->sizePolicy().hasHeightForWidth());
+        set_lmax_button->setSizePolicy(sizePolicy4);
         set_lmax_button->setMinimumSize(QSize(85, 0));
         lmax_textbrowser = new QTextBrowser(lmax_calibration_5);
         lmax_textbrowser->setObjectName(QString::fromUtf8("lmax_textbrowser"));
@@ -712,16 +716,13 @@ public:
 
         lmax_calibration_9 = new QWidget(widget_2);
         lmax_calibration_9->setObjectName(QString::fromUtf8("lmax_calibration_9"));
-        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy4.setHorizontalStretch(0);
-        sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(lmax_calibration_9->sizePolicy().hasHeightForWidth());
-        lmax_calibration_9->setSizePolicy(sizePolicy4);
+        sizePolicy3.setHeightForWidth(lmax_calibration_9->sizePolicy().hasHeightForWidth());
+        lmax_calibration_9->setSizePolicy(sizePolicy3);
         set_pH0_button = new QPushButton(lmax_calibration_9);
         set_pH0_button->setObjectName(QString::fromUtf8("set_pH0_button"));
         set_pH0_button->setGeometry(QRect(0, 0, 300, 50));
-        sizePolicy3.setHeightForWidth(set_pH0_button->sizePolicy().hasHeightForWidth());
-        set_pH0_button->setSizePolicy(sizePolicy3);
+        sizePolicy4.setHeightForWidth(set_pH0_button->sizePolicy().hasHeightForWidth());
+        set_pH0_button->setSizePolicy(sizePolicy4);
         pH0_textbrowser = new QTextBrowser(lmax_calibration_9);
         pH0_textbrowser->setObjectName(QString::fromUtf8("pH0_textbrowser"));
         pH0_textbrowser->setGeometry(QRect(305, 9, 200, 33));
@@ -738,8 +739,8 @@ public:
         set_dpH_button = new QPushButton(lmax_calibration_10);
         set_dpH_button->setObjectName(QString::fromUtf8("set_dpH_button"));
         set_dpH_button->setGeometry(QRect(0, 0, 300, 50));
-        sizePolicy3.setHeightForWidth(set_dpH_button->sizePolicy().hasHeightForWidth());
-        set_dpH_button->setSizePolicy(sizePolicy3);
+        sizePolicy4.setHeightForWidth(set_dpH_button->sizePolicy().hasHeightForWidth());
+        set_dpH_button->setSizePolicy(sizePolicy4);
         dpH_textbrowser = new QTextBrowser(lmax_calibration_10);
         dpH_textbrowser->setObjectName(QString::fromUtf8("dpH_textbrowser"));
         dpH_textbrowser->setGeometry(QRect(305, 9, 200, 33));
@@ -756,8 +757,8 @@ public:
         set_temp_button = new QPushButton(lmax_calibration_11);
         set_temp_button->setObjectName(QString::fromUtf8("set_temp_button"));
         set_temp_button->setGeometry(QRect(0, 0, 300, 50));
-        sizePolicy3.setHeightForWidth(set_temp_button->sizePolicy().hasHeightForWidth());
-        set_temp_button->setSizePolicy(sizePolicy3);
+        sizePolicy4.setHeightForWidth(set_temp_button->sizePolicy().hasHeightForWidth());
+        set_temp_button->setSizePolicy(sizePolicy4);
         temp_textbrowser = new QTextBrowser(lmax_calibration_11);
         temp_textbrowser->setObjectName(QString::fromUtf8("temp_textbrowser"));
         temp_textbrowser->setGeometry(QRect(305, 9, 200, 33));
@@ -880,7 +881,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
         tabWidget_2->setCurrentIndex(3);
 
 
