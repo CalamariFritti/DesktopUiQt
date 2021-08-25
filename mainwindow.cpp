@@ -33,6 +33,9 @@ MainWindow::MainWindow(QWidget *parent) :
     startDialog();
 
     startStorageReader();
+
+    valueVectorPreparation();
+
 }
 
 MainWindow::~MainWindow()
@@ -73,6 +76,19 @@ void MainWindow::startStorageReader(){
     qint64 storAvailable = storage.bytesAvailable()/1024/1024/1024;
     QString stor = QString::number(storAvailable) + " GB";
     ui->stopMeassurementButton->setText(stor);
+
+}
+
+void MainWindow::valueVectorPreparation(){
+
+    for( int i = 0; i < 2; i++){
+        qv_o2_1.append(0);
+        qv_o2_2.append(0);
+        qv_co2_1.append(0);
+        qv_co2_2.append(0);
+        qv_ph_1.append(0);
+        qv_ph_1.append(0);
+    }
 
 }
 

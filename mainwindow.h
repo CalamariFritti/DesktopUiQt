@@ -160,6 +160,8 @@ private slots:
         void startStorageReader();
 
         void setupSensor485();
+
+        void valueVectorPreparation();
 private:
     Ui::MainWindow *ui;
 
@@ -167,7 +169,13 @@ private:
     Dialog * activation;
 
     // current directory for output
-    QString dir = QCoreApplication::applicationDirPath();
+    //QString dir = QCoreApplication::applicationDirPath();
+
+    //setting dir to fixed path for testing
+    QString dir = ""
+                  ""
+                  ""
+                  "/home/ftg/workspace/qtapp";
 
     QTimer * timer_for_output;
 
@@ -229,9 +237,9 @@ private:
 
     QSerialPort * ptr_port_0 = &port_0;
 
-    // setting system_locations to hardware addresses
-    //QString port_0_system_location = "/dev/pts/3";
-    QString port_0_system_location = "/dev/ttyUSB1";
+// hw address for new RS 485 port (this matches Toradex' colibri-uartb)
+    QString port_0_system_location = "/dev/ttyLP0";
+// deprecated, from RS 323
     QString port_1_system_location = "/dev/ttyUSB5";
     QString port_2_system_location = "/dev/ttyUSB3";
     QString port_3_system_location = "/dev/ttyUSB4";
@@ -239,12 +247,15 @@ private:
     QString port_5_system_location = "/dev/ttyUSB2";
 
     QString input_buffer_port_0;
+// deprecated, from RS 323
     QString input_buffer_port_1;
     QString input_buffer_port_2;
     QString input_buffer_port_3;
     QString input_buffer_port_4;
     QString input_buffer_port_5;
+
     QByteArray serial_input_port_0;
+// deprecated, from RS 323
     QByteArray serial_input_port_1;
     QByteArray serial_input_port_2;
     QByteArray serial_input_port_3;
