@@ -23,7 +23,7 @@
 #include <QProxyStyle>
 #include <QStyleOptionTab>
 #include <QInputDialog>
-
+#include <QVector>
 
 #include "dialog.h"
 #include "sensor.h"
