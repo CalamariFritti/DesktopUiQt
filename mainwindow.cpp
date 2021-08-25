@@ -1395,6 +1395,14 @@ void MainWindow::on_start_measurement_button_clicked()
 
     QObject::connect(timer_for_output, &QTimer::timeout, this, [this, filepath, raw_filepath]{
 
+        qDebug() << ("----------------------------------------------");
+        qDebug() << qv_o2_1[qv_o2_1.size() - 1];
+        qDebug() << qv_o2_2[qv_o2_2.size() -1];
+        qDebug() << qv_co2_1[qv_co2_1.size() -1];
+        qDebug() << qv_co2_2[qv_co2_2.size() -1];
+        qDebug() << qv_ph_1[qv_ph_1.size() -1];
+        qDebug() << qv_ph_1[qv_ph_1.size() -1];
+        qDebug() << ("----------------------------------------------");
         set_main_output_buttons();
         write_to_file(filepath);
         write_to_file_raw(raw_filepath);
