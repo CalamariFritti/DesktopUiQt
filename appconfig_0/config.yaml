@@ -12,12 +12,12 @@ extraparms:
     release: {}
 id: 10940dc7-a3ba-4dbb-8b0c-70acbfe4839f
 images:
-    debug: sha256:d2716001be9f4a8e9437be72636ccdef87ac40cc3d791ef1ad592fdeaa5e6a49
+    debug: sha256:b6047082e4bc4fc0b0daf25ce7a94196d1d4977bc67734d92f7c1533863e677d
     release: ''
 imagetags:
     debug: desktopuiqt_arm64v8-qt5-vivante-no-ssh_bullseye_debug_10940dc7-a3ba-4dbb-8b0c-70acbfe4839f
     release: desktopuiqt_arm64v8-qt5-vivante-no-ssh_bullseye_release_10940dc7-a3ba-4dbb-8b0c-70acbfe4839f
-modificationdate: '2021-08-24T09:35:19.878888'
+modificationdate: '2021-08-25T11:39:38.865713'
 networks:
     common: []
     debug: []
