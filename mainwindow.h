@@ -159,6 +159,7 @@ private slots:
 
         void startStorageReader();
 
+        void setupSensor485();
 private:
     Ui::MainWindow *ui;
 
@@ -213,12 +214,18 @@ private:
     // index of the array is hw_id, value is hw_address -> port_index[0]: 4 means /dev/ttyUSB0 was distributed to N04
     int port_index[6];
 
+// port_0 is new port for RS 485 comm.
     QSerialPort port_0;
+
+// deprecated RS 323, no longer in use
     QSerialPort port_1;
     QSerialPort port_2;
     QSerialPort port_3;
     QSerialPort port_4;
     QSerialPort port_5;
+
+// serialport Object for RS 485, not yet in use
+    QSerialPort port_485;
 
     QSerialPort * ptr_port_0 = &port_0;
 

@@ -19,7 +19,10 @@ MainWindow::MainWindow(QWidget *parent) :
     // wait for 10 seconds to make sure the sensors are started
 //  delay(10);
 
-    setupSensors();
+// old RS 323
+//    setupSensors();
+
+    setupSensor485();
 
     delay(1);
 
@@ -201,30 +204,34 @@ void MainWindow::setupGraphs()
 
 
 }
-/*
+
 void MainWindow::setupSensor485()
 {
-    port485.setPortName("TODO_hw_address_for_RS485");
 
-    port485->open(QSerialPort::ReadWrite);
-    qDebug() << "RS485 is open? :" << port485->isOpen();
-    port485->setBaudRate(QSerialPort::Baud19200);
-    qDebug() << "RS485 baudrate set to 19200: " << port;
-    port485->setDataBits(QSerialPort::Data8);         // default for presens EOM
+    port_0.setPortName("TODO_hw_address_for_RS485");
+
+    port_0.open(QSerialPort::ReadWrite);
+    qDebug() << "RS485 is open? :" << port_0.isOpen();
+    port_0.setBaudRate(QSerialPort::Baud19200);
+    qDebug() << "RS485 baudrate set to: 19200 ";
+    port_0.setDataBits(QSerialPort::Data8);         // default for presens EOM
     qDebug() << "Date bits set to: Data8";
-    port485->setFlowControl(QSerialPort::NoFlowControl);  // default for presens EOM
+    port_0.setFlowControl(QSerialPort::NoFlowControl);  // default for presens EOM
     qDebug() << "Flow control set to: NoFlowControl";
-    port485->setParity(QSerialPort::NoParity);            // default for presens EOM
+    port_0.setParity(QSerialPort::NoParity);            // default for presens EOM
     qDebug() << "Parity set to: NoParity";
-    port485->setStopBits(QSerialPort::OneStop);           // default for presens EOM
+    port_0.setStopBits(QSerialPort::OneStop);           // default for presens EOM
     qDebug() << "StopBits set to: OneStop";
 
-    port485->open(QSerialPort::ReadWrite);
-    qDebug() << "RS485 reopen to confirm settings? " << port485->isOpen();
+    port_0.open(QSerialPort::ReadWrite);
+    qDebug() << "RS485 reopen to confirm settings? " << port_0.isOpen();
     qDebug() << "------------------------------------------------------------------";
 
 }
-*/
+
+
+// RS323 communication setup, deprecated
+
 void MainWindow::setupSensors()
 {
     QString turn_off_sensors = "mode0001\r";

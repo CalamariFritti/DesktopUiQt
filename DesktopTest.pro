@@ -65,11 +65,12 @@ HEADERS += \
     keyboard.h
 
 FORMS += \
-        mainwindow.ui \
+    mainwindow.ui \
     dialog.ui \
     keyboard.ui
 
-DISTFILES +=
+DISTFILES += \
+    img/2019-11-13_01-Favicon_VIVE-MedTech.png
 
 
 DESTDIR = $$(QMAKE_DESTIDIR)
