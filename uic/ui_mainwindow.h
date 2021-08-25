@@ -36,46 +36,46 @@ public:
     QGridLayout *gridLayout;
     QTabWidget *tabWidget;
     QWidget *general;
-    QPushButton *stopMeassurementButton;
-    QWidget *horizontalLayoutWidget;
-    QHBoxLayout *horizontalLayout;
-    QPushButton *pCO2DisplayButton;
-    QPushButton *pO2DisplayButton;
-    QPushButton *pHDisplayButton;
-    QWidget *horizontalLayoutWidget_2;
+    QVBoxLayout *verticalLayout_4;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label;
     QLabel *label_2;
     QLabel *label_4;
-    QWidget *horizontalLayoutWidget_3;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *pCO2DisplayButton;
+    QPushButton *pO2DisplayButton;
+    QPushButton *pHDisplayButton;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_10;
     QLabel *label_11;
     QLabel *label_12;
-    QWidget *horizontalLayoutWidget_4;
     QHBoxLayout *horizontalLayout_4;
     QPushButton *pHDisplayButton_2;
     QPushButton *pCO2DisplayButton_2;
     QPushButton *pO2DisplayButton_2;
+    QHBoxLayout *horizontalLayout_5;
+    QPushButton *stopMeassurementButton;
     QLabel *label_23;
     QPushButton *memoryValueButton;
     QWidget *start;
     QTabWidget *tabWidget_2;
     QWidget *tab;
-    QPushButton *initialize_sensor_1_button;
+    QGridLayout *gridLayout_2;
     QLabel *sensor_1_init_label;
-    QLabel *sensor_3_init_label;
-    QPushButton *initialize_sensor_4_button;
-    QPushButton *initialize_sensor_3_button;
-    QPushButton *initialize_sensor_5_button;
-    QLabel *sensor_2_init_label;
-    QLabel *sensor_4_init_label;
-    QPushButton *initialize_sensor_2_button;
-    QLabel *sensor_5_init_label;
-    QLabel *sensor_6_init_label;
     QPushButton *initialize_sensor_0_button;
+    QLabel *sensor_2_init_label;
+    QPushButton *initialize_sensor_1_button;
+    QLabel *sensor_3_init_label;
+    QPushButton *initialize_sensor_2_button;
+    QLabel *sensor_4_init_label;
+    QPushButton *initialize_sensor_3_button;
+    QLabel *sensor_5_init_label;
+    QPushButton *initialize_sensor_4_button;
+    QLabel *sensor_6_init_label;
+    QPushButton *initialize_sensor_5_button;
     QPushButton *quitButtonStartMain;
     QPushButton *start_measurement_button;
+    QPushButton *memValButton;
     QWidget *tab_2;
     QWidget *widget;
     QVBoxLayout *verticalLayout;
@@ -136,23 +136,18 @@ public:
     QWidget *lmax_calibration_8;
     QPushButton *set_lmin_button;
     QTextBrowser *lmin_textbrowser;
-    QLabel *label_13;
     QWidget *lmax_calibration_5;
     QPushButton *set_lmax_button;
     QTextBrowser *lmax_textbrowser;
-    QLabel *label_14;
     QWidget *lmax_calibration_9;
     QPushButton *set_pH0_button;
     QTextBrowser *pH0_textbrowser;
-    QLabel *label_15;
     QWidget *lmax_calibration_10;
     QPushButton *set_dpH_button;
     QTextBrowser *dpH_textbrowser;
-    QLabel *label_16;
     QWidget *lmax_calibration_11;
     QPushButton *set_temp_button;
     QTextBrowser *temp_textbrowser;
-    QLabel *label_17;
     QPushButton *allSet_pH;
     QPushButton *quitButtonStartMain_3;
     QWidget *tab_5;
@@ -202,20 +197,42 @@ public:
         tabWidget->setTabPosition(QTabWidget::West);
         general = new QWidget();
         general->setObjectName(QString::fromUtf8("general"));
+        general->setEnabled(false);
         general->setMinimumSize(QSize(0, 0));
+        general->setLayoutDirection(Qt::LeftToRight);
         general->setStyleSheet(QString::fromUtf8(""));
-        stopMeassurementButton = new QPushButton(general);
-        stopMeassurementButton->setObjectName(QString::fromUtf8("stopMeassurementButton"));
-        stopMeassurementButton->setGeometry(QRect(10, 660, 671, 51));
-        horizontalLayoutWidget = new QWidget(general);
-        horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(0, 100, 1131, 191));
-        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+        verticalLayout_4 = new QVBoxLayout(general);
+        verticalLayout_4->setSpacing(6);
+        verticalLayout_4->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        label = new QLabel(general);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_2->addWidget(label);
+
+        label_2 = new QLabel(general);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_2->addWidget(label_2);
+
+        label_4 = new QLabel(general);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_2->addWidget(label_4);
+
+
+        verticalLayout_4->addLayout(horizontalLayout_2);
+
+        horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
-        horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        pCO2DisplayButton = new QPushButton(horizontalLayoutWidget);
+        pCO2DisplayButton = new QPushButton(general);
         pCO2DisplayButton->setObjectName(QString::fromUtf8("pCO2DisplayButton"));
         QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
@@ -226,7 +243,7 @@ public:
 
         horizontalLayout->addWidget(pCO2DisplayButton);
 
-        pO2DisplayButton = new QPushButton(horizontalLayoutWidget);
+        pO2DisplayButton = new QPushButton(general);
         pO2DisplayButton->setObjectName(QString::fromUtf8("pO2DisplayButton"));
         sizePolicy.setHeightForWidth(pO2DisplayButton->sizePolicy().hasHeightForWidth());
         pO2DisplayButton->setSizePolicy(sizePolicy);
@@ -236,7 +253,7 @@ public:
 
         horizontalLayout->addWidget(pO2DisplayButton);
 
-        pHDisplayButton = new QPushButton(horizontalLayoutWidget);
+        pHDisplayButton = new QPushButton(general);
         pHDisplayButton->setObjectName(QString::fromUtf8("pHDisplayButton"));
         sizePolicy.setHeightForWidth(pHDisplayButton->sizePolicy().hasHeightForWidth());
         pHDisplayButton->setSizePolicy(sizePolicy);
@@ -244,67 +261,37 @@ public:
 
         horizontalLayout->addWidget(pHDisplayButton);
 
-        horizontalLayoutWidget_2 = new QWidget(general);
-        horizontalLayoutWidget_2->setObjectName(QString::fromUtf8("horizontalLayoutWidget_2"));
-        horizontalLayoutWidget_2->setGeometry(QRect(0, 20, 1131, 80));
-        horizontalLayout_2 = new QHBoxLayout(horizontalLayoutWidget_2);
-        horizontalLayout_2->setSpacing(6);
-        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(horizontalLayoutWidget_2);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setAlignment(Qt::AlignCenter);
 
-        horizontalLayout_2->addWidget(label);
+        verticalLayout_4->addLayout(horizontalLayout);
 
-        label_2 = new QLabel(horizontalLayoutWidget_2);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setAlignment(Qt::AlignCenter);
-
-        horizontalLayout_2->addWidget(label_2);
-
-        label_4 = new QLabel(horizontalLayoutWidget_2);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setAlignment(Qt::AlignCenter);
-
-        horizontalLayout_2->addWidget(label_4);
-
-        horizontalLayoutWidget_3 = new QWidget(general);
-        horizontalLayoutWidget_3->setObjectName(QString::fromUtf8("horizontalLayoutWidget_3"));
-        horizontalLayoutWidget_3->setGeometry(QRect(0, 310, 1131, 80));
-        horizontalLayout_3 = new QHBoxLayout(horizontalLayoutWidget_3);
+        horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setSpacing(6);
-        horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        label_10 = new QLabel(horizontalLayoutWidget_3);
+        label_10 = new QLabel(general);
         label_10->setObjectName(QString::fromUtf8("label_10"));
         label_10->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_3->addWidget(label_10);
 
-        label_11 = new QLabel(horizontalLayoutWidget_3);
+        label_11 = new QLabel(general);
         label_11->setObjectName(QString::fromUtf8("label_11"));
         label_11->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_3->addWidget(label_11);
 
-        label_12 = new QLabel(horizontalLayoutWidget_3);
+        label_12 = new QLabel(general);
         label_12->setObjectName(QString::fromUtf8("label_12"));
         label_12->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_3->addWidget(label_12);
 
-        horizontalLayoutWidget_4 = new QWidget(general);
-        horizontalLayoutWidget_4->setObjectName(QString::fromUtf8("horizontalLayoutWidget_4"));
-        horizontalLayoutWidget_4->setGeometry(QRect(0, 390, 1131, 181));
-        horizontalLayout_4 = new QHBoxLayout(horizontalLayoutWidget_4);
+
+        verticalLayout_4->addLayout(horizontalLayout_3);
+
+        horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setSpacing(6);
-        horizontalLayout_4->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
-        pHDisplayButton_2 = new QPushButton(horizontalLayoutWidget_4);
+        pHDisplayButton_2 = new QPushButton(general);
         pHDisplayButton_2->setObjectName(QString::fromUtf8("pHDisplayButton_2"));
         sizePolicy.setHeightForWidth(pHDisplayButton_2->sizePolicy().hasHeightForWidth());
         pHDisplayButton_2->setSizePolicy(sizePolicy);
@@ -312,7 +299,7 @@ public:
 
         horizontalLayout_4->addWidget(pHDisplayButton_2);
 
-        pCO2DisplayButton_2 = new QPushButton(horizontalLayoutWidget_4);
+        pCO2DisplayButton_2 = new QPushButton(general);
         pCO2DisplayButton_2->setObjectName(QString::fromUtf8("pCO2DisplayButton_2"));
         sizePolicy.setHeightForWidth(pCO2DisplayButton_2->sizePolicy().hasHeightForWidth());
         pCO2DisplayButton_2->setSizePolicy(sizePolicy);
@@ -320,7 +307,7 @@ public:
 
         horizontalLayout_4->addWidget(pCO2DisplayButton_2);
 
-        pO2DisplayButton_2 = new QPushButton(horizontalLayoutWidget_4);
+        pO2DisplayButton_2 = new QPushButton(general);
         pO2DisplayButton_2->setObjectName(QString::fromUtf8("pO2DisplayButton_2"));
         sizePolicy.setHeightForWidth(pO2DisplayButton_2->sizePolicy().hasHeightForWidth());
         pO2DisplayButton_2->setSizePolicy(sizePolicy);
@@ -328,15 +315,38 @@ public:
 
         horizontalLayout_4->addWidget(pO2DisplayButton_2);
 
+
+        verticalLayout_4->addLayout(horizontalLayout_4);
+
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setSpacing(6);
+        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        stopMeassurementButton = new QPushButton(general);
+        stopMeassurementButton->setObjectName(QString::fromUtf8("stopMeassurementButton"));
+        sizePolicy.setHeightForWidth(stopMeassurementButton->sizePolicy().hasHeightForWidth());
+        stopMeassurementButton->setSizePolicy(sizePolicy);
+
+        horizontalLayout_5->addWidget(stopMeassurementButton);
+
         label_23 = new QLabel(general);
         label_23->setObjectName(QString::fromUtf8("label_23"));
-        label_23->setGeometry(QRect(890, 600, 201, 41));
+        label_23->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        horizontalLayout_5->addWidget(label_23);
+
         memoryValueButton = new QPushButton(general);
         memoryValueButton->setObjectName(QString::fromUtf8("memoryValueButton"));
-        memoryValueButton->setGeometry(QRect(880, 640, 231, 81));
+        sizePolicy.setHeightForWidth(memoryValueButton->sizePolicy().hasHeightForWidth());
+        memoryValueButton->setSizePolicy(sizePolicy);
         QFont font;
         font.setPointSize(25);
         memoryValueButton->setFont(font);
+
+        horizontalLayout_5->addWidget(memoryValueButton);
+
+
+        verticalLayout_4->addLayout(horizontalLayout_5);
+
         tabWidget->addTab(general, QString());
         start = new QWidget();
         start->setObjectName(QString::fromUtf8("start"));
@@ -346,66 +356,121 @@ public:
         tabWidget_2->setStyleSheet(QString::fromUtf8(""));
         tab = new QWidget();
         tab->setObjectName(QString::fromUtf8("tab"));
-        initialize_sensor_1_button = new QPushButton(tab);
-        initialize_sensor_1_button->setObjectName(QString::fromUtf8("initialize_sensor_1_button"));
-        initialize_sensor_1_button->setGeometry(QRect(253, 66, 220, 55));
+        gridLayout_2 = new QGridLayout(tab);
+        gridLayout_2->setSpacing(6);
+        gridLayout_2->setContentsMargins(11, 11, 11, 11);
+        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         sensor_1_init_label = new QLabel(tab);
         sensor_1_init_label->setObjectName(QString::fromUtf8("sensor_1_init_label"));
-        sensor_1_init_label->setGeometry(QRect(43, 0, 171, 60));
         sensor_1_init_label->setStyleSheet(QString::fromUtf8("background-color : red;\n"
 "font-size: 30;"));
         sensor_1_init_label->setAlignment(Qt::AlignCenter);
-        sensor_3_init_label = new QLabel(tab);
-        sensor_3_init_label->setObjectName(QString::fromUtf8("sensor_3_init_label"));
-        sensor_3_init_label->setGeometry(QRect(43, 130, 171, 55));
-        sensor_3_init_label->setStyleSheet(QString::fromUtf8("background-color : red;\n"
-"font-size: 30;"));
-        sensor_3_init_label->setAlignment(Qt::AlignCenter);
-        initialize_sensor_4_button = new QPushButton(tab);
-        initialize_sensor_4_button->setObjectName(QString::fromUtf8("initialize_sensor_4_button"));
-        initialize_sensor_4_button->setGeometry(QRect(253, 250, 220, 55));
-        initialize_sensor_3_button = new QPushButton(tab);
-        initialize_sensor_3_button->setObjectName(QString::fromUtf8("initialize_sensor_3_button"));
-        initialize_sensor_3_button->setGeometry(QRect(253, 190, 220, 55));
-        initialize_sensor_5_button = new QPushButton(tab);
-        initialize_sensor_5_button->setObjectName(QString::fromUtf8("initialize_sensor_5_button"));
-        initialize_sensor_5_button->setGeometry(QRect(253, 310, 220, 55));
+
+        gridLayout_2->addWidget(sensor_1_init_label, 0, 0, 1, 1);
+
+        initialize_sensor_0_button = new QPushButton(tab);
+        initialize_sensor_0_button->setObjectName(QString::fromUtf8("initialize_sensor_0_button"));
+        sizePolicy.setHeightForWidth(initialize_sensor_0_button->sizePolicy().hasHeightForWidth());
+        initialize_sensor_0_button->setSizePolicy(sizePolicy);
+
+        gridLayout_2->addWidget(initialize_sensor_0_button, 0, 1, 1, 1);
+
         sensor_2_init_label = new QLabel(tab);
         sensor_2_init_label->setObjectName(QString::fromUtf8("sensor_2_init_label"));
-        sensor_2_init_label->setGeometry(QRect(43, 66, 171, 55));
         sensor_2_init_label->setStyleSheet(QString::fromUtf8("background-color : red;\n"
 "font-size: 30;"));
         sensor_2_init_label->setAlignment(Qt::AlignCenter);
+
+        gridLayout_2->addWidget(sensor_2_init_label, 1, 0, 1, 1);
+
+        initialize_sensor_1_button = new QPushButton(tab);
+        initialize_sensor_1_button->setObjectName(QString::fromUtf8("initialize_sensor_1_button"));
+        sizePolicy.setHeightForWidth(initialize_sensor_1_button->sizePolicy().hasHeightForWidth());
+        initialize_sensor_1_button->setSizePolicy(sizePolicy);
+
+        gridLayout_2->addWidget(initialize_sensor_1_button, 1, 1, 1, 1);
+
+        sensor_3_init_label = new QLabel(tab);
+        sensor_3_init_label->setObjectName(QString::fromUtf8("sensor_3_init_label"));
+        sensor_3_init_label->setStyleSheet(QString::fromUtf8("background-color : red;\n"
+"font-size: 30;"));
+        sensor_3_init_label->setAlignment(Qt::AlignCenter);
+
+        gridLayout_2->addWidget(sensor_3_init_label, 2, 0, 1, 1);
+
+        initialize_sensor_2_button = new QPushButton(tab);
+        initialize_sensor_2_button->setObjectName(QString::fromUtf8("initialize_sensor_2_button"));
+        sizePolicy.setHeightForWidth(initialize_sensor_2_button->sizePolicy().hasHeightForWidth());
+        initialize_sensor_2_button->setSizePolicy(sizePolicy);
+
+        gridLayout_2->addWidget(initialize_sensor_2_button, 2, 1, 1, 1);
+
         sensor_4_init_label = new QLabel(tab);
         sensor_4_init_label->setObjectName(QString::fromUtf8("sensor_4_init_label"));
-        sensor_4_init_label->setGeometry(QRect(43, 190, 171, 55));
         sensor_4_init_label->setStyleSheet(QString::fromUtf8("background-color : red;\n"
 "font-size: 30;"));
         sensor_4_init_label->setAlignment(Qt::AlignCenter);
-        initialize_sensor_2_button = new QPushButton(tab);
-        initialize_sensor_2_button->setObjectName(QString::fromUtf8("initialize_sensor_2_button"));
-        initialize_sensor_2_button->setGeometry(QRect(253, 130, 220, 55));
+
+        gridLayout_2->addWidget(sensor_4_init_label, 3, 0, 1, 1);
+
+        initialize_sensor_3_button = new QPushButton(tab);
+        initialize_sensor_3_button->setObjectName(QString::fromUtf8("initialize_sensor_3_button"));
+        sizePolicy.setHeightForWidth(initialize_sensor_3_button->sizePolicy().hasHeightForWidth());
+        initialize_sensor_3_button->setSizePolicy(sizePolicy);
+
+        gridLayout_2->addWidget(initialize_sensor_3_button, 3, 1, 1, 1);
+
         sensor_5_init_label = new QLabel(tab);
         sensor_5_init_label->setObjectName(QString::fromUtf8("sensor_5_init_label"));
-        sensor_5_init_label->setGeometry(QRect(43, 250, 171, 55));
         sensor_5_init_label->setStyleSheet(QString::fromUtf8("background-color : red;\n"
 "font-size: 30;"));
         sensor_5_init_label->setAlignment(Qt::AlignCenter);
+
+        gridLayout_2->addWidget(sensor_5_init_label, 4, 0, 1, 1);
+
+        initialize_sensor_4_button = new QPushButton(tab);
+        initialize_sensor_4_button->setObjectName(QString::fromUtf8("initialize_sensor_4_button"));
+        sizePolicy.setHeightForWidth(initialize_sensor_4_button->sizePolicy().hasHeightForWidth());
+        initialize_sensor_4_button->setSizePolicy(sizePolicy);
+
+        gridLayout_2->addWidget(initialize_sensor_4_button, 4, 1, 1, 1);
+
         sensor_6_init_label = new QLabel(tab);
         sensor_6_init_label->setObjectName(QString::fromUtf8("sensor_6_init_label"));
-        sensor_6_init_label->setGeometry(QRect(43, 312, 171, 55));
         sensor_6_init_label->setStyleSheet(QString::fromUtf8("background-color : red;\n"
 "font-size: 30;"));
         sensor_6_init_label->setAlignment(Qt::AlignCenter);
-        initialize_sensor_0_button = new QPushButton(tab);
-        initialize_sensor_0_button->setObjectName(QString::fromUtf8("initialize_sensor_0_button"));
-        initialize_sensor_0_button->setGeometry(QRect(253, 0, 220, 60));
+
+        gridLayout_2->addWidget(sensor_6_init_label, 5, 0, 1, 1);
+
+        initialize_sensor_5_button = new QPushButton(tab);
+        initialize_sensor_5_button->setObjectName(QString::fromUtf8("initialize_sensor_5_button"));
+        sizePolicy.setHeightForWidth(initialize_sensor_5_button->sizePolicy().hasHeightForWidth());
+        initialize_sensor_5_button->setSizePolicy(sizePolicy);
+
+        gridLayout_2->addWidget(initialize_sensor_5_button, 5, 1, 1, 1);
+
         quitButtonStartMain = new QPushButton(tab);
         quitButtonStartMain->setObjectName(QString::fromUtf8("quitButtonStartMain"));
-        quitButtonStartMain->setGeometry(QRect(560, 330, 90, 30));
+        sizePolicy.setHeightForWidth(quitButtonStartMain->sizePolicy().hasHeightForWidth());
+        quitButtonStartMain->setSizePolicy(sizePolicy);
+
+        gridLayout_2->addWidget(quitButtonStartMain, 5, 2, 1, 1);
+
         start_measurement_button = new QPushButton(tab);
         start_measurement_button->setObjectName(QString::fromUtf8("start_measurement_button"));
-        start_measurement_button->setGeometry(QRect(540, 20, 131, 71));
+        sizePolicy.setHeightForWidth(start_measurement_button->sizePolicy().hasHeightForWidth());
+        start_measurement_button->setSizePolicy(sizePolicy);
+
+        gridLayout_2->addWidget(start_measurement_button, 0, 2, 1, 1);
+
+        memValButton = new QPushButton(tab);
+        memValButton->setObjectName(QString::fromUtf8("memValButton"));
+        sizePolicy.setHeightForWidth(memValButton->sizePolicy().hasHeightForWidth());
+        memValButton->setSizePolicy(sizePolicy);
+
+        gridLayout_2->addWidget(memValButton, 2, 2, 1, 1);
+
         tabWidget_2->addTab(tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QString::fromUtf8("tab_2"));
@@ -665,7 +730,7 @@ public:
         tab_4->setObjectName(QString::fromUtf8("tab_4"));
         widget_2 = new QWidget(tab_4);
         widget_2->setObjectName(QString::fromUtf8("widget_2"));
-        widget_2->setGeometry(QRect(0, 0, 571, 601));
+        widget_2->setGeometry(QRect(0, 0, 921, 601));
         verticalLayout_2 = new QVBoxLayout(widget_2);
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -674,7 +739,7 @@ public:
         lmax_calibration_8->setObjectName(QString::fromUtf8("lmax_calibration_8"));
         set_lmin_button = new QPushButton(lmax_calibration_8);
         set_lmin_button->setObjectName(QString::fromUtf8("set_lmin_button"));
-        set_lmin_button->setGeometry(QRect(0, 0, 300, 110));
+        set_lmin_button->setGeometry(QRect(0, 0, 471, 110));
         QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy3.setHorizontalStretch(0);
         sizePolicy3.setVerticalStretch(0);
@@ -683,34 +748,26 @@ public:
         set_lmin_button->setMinimumSize(QSize(0, 110));
         lmin_textbrowser = new QTextBrowser(lmax_calibration_8);
         lmin_textbrowser->setObjectName(QString::fromUtf8("lmin_textbrowser"));
-        lmin_textbrowser->setGeometry(QRect(310, 40, 200, 33));
-        label_13 = new QLabel(lmax_calibration_8);
-        label_13->setObjectName(QString::fromUtf8("label_13"));
-        label_13->setGeometry(QRect(520, 40, 16, 19));
-        label_13->setFont(font1);
-        label_13->setAlignment(Qt::AlignCenter);
+        lmin_textbrowser->setGeometry(QRect(480, 0, 270, 50));
 
         verticalLayout_2->addWidget(lmax_calibration_8);
 
         lmax_calibration_5 = new QWidget(widget_2);
         lmax_calibration_5->setObjectName(QString::fromUtf8("lmax_calibration_5"));
+        sizePolicy3.setHeightForWidth(lmax_calibration_5->sizePolicy().hasHeightForWidth());
+        lmax_calibration_5->setSizePolicy(sizePolicy3);
         set_lmax_button = new QPushButton(lmax_calibration_5);
         set_lmax_button->setObjectName(QString::fromUtf8("set_lmax_button"));
-        set_lmax_button->setGeometry(QRect(0, 0, 300, 50));
-        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        set_lmax_button->setGeometry(QRect(0, 0, 471, 111));
+        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy4.setHorizontalStretch(1);
         sizePolicy4.setVerticalStretch(0);
         sizePolicy4.setHeightForWidth(set_lmax_button->sizePolicy().hasHeightForWidth());
         set_lmax_button->setSizePolicy(sizePolicy4);
-        set_lmax_button->setMinimumSize(QSize(85, 0));
+        set_lmax_button->setMinimumSize(QSize(110, 0));
         lmax_textbrowser = new QTextBrowser(lmax_calibration_5);
         lmax_textbrowser->setObjectName(QString::fromUtf8("lmax_textbrowser"));
-        lmax_textbrowser->setGeometry(QRect(305, 9, 200, 33));
-        label_14 = new QLabel(lmax_calibration_5);
-        label_14->setObjectName(QString::fromUtf8("label_14"));
-        label_14->setGeometry(QRect(509, 9, 16, 19));
-        label_14->setFont(font1);
-        label_14->setAlignment(Qt::AlignCenter);
+        lmax_textbrowser->setGeometry(QRect(480, 0, 270, 50));
 
         verticalLayout_2->addWidget(lmax_calibration_5);
 
@@ -720,17 +777,15 @@ public:
         lmax_calibration_9->setSizePolicy(sizePolicy3);
         set_pH0_button = new QPushButton(lmax_calibration_9);
         set_pH0_button->setObjectName(QString::fromUtf8("set_pH0_button"));
-        set_pH0_button->setGeometry(QRect(0, 0, 300, 50));
-        sizePolicy4.setHeightForWidth(set_pH0_button->sizePolicy().hasHeightForWidth());
-        set_pH0_button->setSizePolicy(sizePolicy4);
+        set_pH0_button->setGeometry(QRect(0, 0, 471, 111));
+        QSizePolicy sizePolicy5(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy5.setHorizontalStretch(1);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(set_pH0_button->sizePolicy().hasHeightForWidth());
+        set_pH0_button->setSizePolicy(sizePolicy5);
         pH0_textbrowser = new QTextBrowser(lmax_calibration_9);
         pH0_textbrowser->setObjectName(QString::fromUtf8("pH0_textbrowser"));
-        pH0_textbrowser->setGeometry(QRect(305, 9, 200, 33));
-        label_15 = new QLabel(lmax_calibration_9);
-        label_15->setObjectName(QString::fromUtf8("label_15"));
-        label_15->setGeometry(QRect(509, 9, 16, 19));
-        label_15->setFont(font1);
-        label_15->setAlignment(Qt::AlignCenter);
+        pH0_textbrowser->setGeometry(QRect(480, 0, 270, 50));
 
         verticalLayout_2->addWidget(lmax_calibration_9);
 
@@ -738,17 +793,12 @@ public:
         lmax_calibration_10->setObjectName(QString::fromUtf8("lmax_calibration_10"));
         set_dpH_button = new QPushButton(lmax_calibration_10);
         set_dpH_button->setObjectName(QString::fromUtf8("set_dpH_button"));
-        set_dpH_button->setGeometry(QRect(0, 0, 300, 50));
-        sizePolicy4.setHeightForWidth(set_dpH_button->sizePolicy().hasHeightForWidth());
-        set_dpH_button->setSizePolicy(sizePolicy4);
+        set_dpH_button->setGeometry(QRect(0, 0, 471, 111));
+        sizePolicy5.setHeightForWidth(set_dpH_button->sizePolicy().hasHeightForWidth());
+        set_dpH_button->setSizePolicy(sizePolicy5);
         dpH_textbrowser = new QTextBrowser(lmax_calibration_10);
         dpH_textbrowser->setObjectName(QString::fromUtf8("dpH_textbrowser"));
-        dpH_textbrowser->setGeometry(QRect(305, 9, 200, 33));
-        label_16 = new QLabel(lmax_calibration_10);
-        label_16->setObjectName(QString::fromUtf8("label_16"));
-        label_16->setGeometry(QRect(509, 9, 16, 19));
-        label_16->setFont(font1);
-        label_16->setAlignment(Qt::AlignCenter);
+        dpH_textbrowser->setGeometry(QRect(480, 0, 270, 50));
 
         verticalLayout_2->addWidget(lmax_calibration_10);
 
@@ -756,26 +806,21 @@ public:
         lmax_calibration_11->setObjectName(QString::fromUtf8("lmax_calibration_11"));
         set_temp_button = new QPushButton(lmax_calibration_11);
         set_temp_button->setObjectName(QString::fromUtf8("set_temp_button"));
-        set_temp_button->setGeometry(QRect(0, 0, 300, 50));
-        sizePolicy4.setHeightForWidth(set_temp_button->sizePolicy().hasHeightForWidth());
-        set_temp_button->setSizePolicy(sizePolicy4);
+        set_temp_button->setGeometry(QRect(0, 0, 471, 111));
+        sizePolicy5.setHeightForWidth(set_temp_button->sizePolicy().hasHeightForWidth());
+        set_temp_button->setSizePolicy(sizePolicy5);
         temp_textbrowser = new QTextBrowser(lmax_calibration_11);
         temp_textbrowser->setObjectName(QString::fromUtf8("temp_textbrowser"));
-        temp_textbrowser->setGeometry(QRect(305, 9, 200, 33));
-        label_17 = new QLabel(lmax_calibration_11);
-        label_17->setObjectName(QString::fromUtf8("label_17"));
-        label_17->setGeometry(QRect(509, 9, 16, 19));
-        label_17->setFont(font1);
-        label_17->setAlignment(Qt::AlignCenter);
+        temp_textbrowser->setGeometry(QRect(480, 0, 270, 50));
 
         verticalLayout_2->addWidget(lmax_calibration_11);
 
         allSet_pH = new QPushButton(tab_4);
         allSet_pH->setObjectName(QString::fromUtf8("allSet_pH"));
-        allSet_pH->setGeometry(QRect(580, 10, 90, 61));
+        allSet_pH->setGeometry(QRect(930, 10, 211, 101));
         quitButtonStartMain_3 = new QPushButton(tab_4);
         quitButtonStartMain_3->setObjectName(QString::fromUtf8("quitButtonStartMain_3"));
-        quitButtonStartMain_3->setGeometry(QRect(580, 330, 90, 30));
+        quitButtonStartMain_3->setGeometry(QRect(920, 480, 221, 101));
         tabWidget_2->addTab(tab_4, QString());
         tab_5 = new QWidget();
         tab_5->setObjectName(QString::fromUtf8("tab_5"));
@@ -869,7 +914,7 @@ public:
         lineGraph_ph->setGeometry(QRect(0, 0, 680, 400));
         tabWidget->addTab(pH, QString());
 
-        gridLayout->addWidget(tabWidget, 0, 0, 1, 1);
+        gridLayout->addWidget(tabWidget, 1, 0, 1, 1);
 
         MainWindow->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(MainWindow);
@@ -882,7 +927,7 @@ public:
         retranslateUi(MainWindow);
 
         tabWidget->setCurrentIndex(1);
-        tabWidget_2->setCurrentIndex(3);
+        tabWidget_2->setCurrentIndex(4);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -891,36 +936,37 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        stopMeassurementButton->setText(QCoreApplication::translate("MainWindow", "Messungen stoppen", nullptr));
-        pCO2DisplayButton->setText(QCoreApplication::translate("MainWindow", "<none>", nullptr));
-        pO2DisplayButton->setText(QCoreApplication::translate("MainWindow", "<none>", nullptr));
-        pHDisplayButton->setText(QCoreApplication::translate("MainWindow", "<none>", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "O2 in mmHg Sensor 1", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "CO2 in mmHg Sensor 1", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "pH Sensor 1", nullptr));
+        pCO2DisplayButton->setText(QCoreApplication::translate("MainWindow", "<none>", nullptr));
+        pO2DisplayButton->setText(QCoreApplication::translate("MainWindow", "<none>", nullptr));
+        pHDisplayButton->setText(QCoreApplication::translate("MainWindow", "<none>", nullptr));
         label_10->setText(QCoreApplication::translate("MainWindow", "O2 in mmHg Sensor 2", nullptr));
         label_11->setText(QCoreApplication::translate("MainWindow", "CO2 in mmHg Sensor 2", nullptr));
         label_12->setText(QCoreApplication::translate("MainWindow", "pH Sensor 2", nullptr));
         pHDisplayButton_2->setText(QCoreApplication::translate("MainWindow", "<none>", nullptr));
         pCO2DisplayButton_2->setText(QCoreApplication::translate("MainWindow", "<none>", nullptr));
         pO2DisplayButton_2->setText(QCoreApplication::translate("MainWindow", "<none>", nullptr));
+        stopMeassurementButton->setText(QCoreApplication::translate("MainWindow", "Messungen stoppen", nullptr));
         label_23->setText(QCoreApplication::translate("MainWindow", "Verf\303\274gbarer Speicher:", nullptr));
         memoryValueButton->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(general), QCoreApplication::translate("MainWindow", "Main", nullptr));
-        initialize_sensor_1_button->setText(QCoreApplication::translate("MainWindow", "Initialisiere 2. O2-Sensor", nullptr));
         sensor_1_init_label->setText(QCoreApplication::translate("MainWindow", "O2-Sensor nicht initialisiert", nullptr));
-        sensor_3_init_label->setText(QCoreApplication::translate("MainWindow", "pH-Sensor nicht initialisiert", nullptr));
-        initialize_sensor_4_button->setText(QCoreApplication::translate("MainWindow", "Initialisiere 1. CO2-Sensor", nullptr));
-        initialize_sensor_3_button->setText(QCoreApplication::translate("MainWindow", "Initialisiere 2. pH-Sensor", nullptr));
-        initialize_sensor_5_button->setText(QCoreApplication::translate("MainWindow", "Initialisiere 2. CO2-Sensor", nullptr));
-        sensor_2_init_label->setText(QCoreApplication::translate("MainWindow", "O2-Sensor nicht initialisiert", nullptr));
-        sensor_4_init_label->setText(QCoreApplication::translate("MainWindow", "pH-Sensor nicht initialisiert", nullptr));
-        initialize_sensor_2_button->setText(QCoreApplication::translate("MainWindow", "Initialisiere 1. pH-Sensor", nullptr));
-        sensor_5_init_label->setText(QCoreApplication::translate("MainWindow", "CO2-Sensor nicht initialisiert", nullptr));
-        sensor_6_init_label->setText(QCoreApplication::translate("MainWindow", "CO2-Sensor nicht initialisiert", nullptr));
         initialize_sensor_0_button->setText(QCoreApplication::translate("MainWindow", "Initialisiere 1. O2-Sensor ", nullptr));
+        sensor_2_init_label->setText(QCoreApplication::translate("MainWindow", "O2-Sensor nicht initialisiert", nullptr));
+        initialize_sensor_1_button->setText(QCoreApplication::translate("MainWindow", "Initialisiere 2. O2-Sensor", nullptr));
+        sensor_3_init_label->setText(QCoreApplication::translate("MainWindow", "pH-Sensor nicht initialisiert", nullptr));
+        initialize_sensor_2_button->setText(QCoreApplication::translate("MainWindow", "Initialisiere 1. pH-Sensor", nullptr));
+        sensor_4_init_label->setText(QCoreApplication::translate("MainWindow", "pH-Sensor nicht initialisiert", nullptr));
+        initialize_sensor_3_button->setText(QCoreApplication::translate("MainWindow", "Initialisiere 2. pH-Sensor", nullptr));
+        sensor_5_init_label->setText(QCoreApplication::translate("MainWindow", "CO2-Sensor nicht initialisiert", nullptr));
+        initialize_sensor_4_button->setText(QCoreApplication::translate("MainWindow", "Initialisiere 1. CO2-Sensor", nullptr));
+        sensor_6_init_label->setText(QCoreApplication::translate("MainWindow", "CO2-Sensor nicht initialisiert", nullptr));
+        initialize_sensor_5_button->setText(QCoreApplication::translate("MainWindow", "Initialisiere 2. CO2-Sensor", nullptr));
         quitButtonStartMain->setText(QCoreApplication::translate("MainWindow", "Quit", nullptr));
         start_measurement_button->setText(QCoreApplication::translate("MainWindow", "Starte Messungen", nullptr));
+        memValButton->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab), QCoreApplication::translate("MainWindow", "\303\234bersicht", nullptr));
         set_f1_button->setText(QCoreApplication::translate("MainWindow", "Setze f1-Wert f\303\274r O2-Sensor", nullptr));
         label_8->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
@@ -951,15 +997,10 @@ public:
         label_22->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_3), QCoreApplication::translate("MainWindow", "CO2 init", nullptr));
         set_lmin_button->setText(QCoreApplication::translate("MainWindow", "Setze lmin-Wert f\303\274r pH-Sensor", nullptr));
-        label_13->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
         set_lmax_button->setText(QCoreApplication::translate("MainWindow", "Setze lmax-Wert f\303\274r pH-Sensor", nullptr));
-        label_14->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
         set_pH0_button->setText(QCoreApplication::translate("MainWindow", "Setze pH0-Wert f\303\274r pH-Sensor", nullptr));
-        label_15->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
         set_dpH_button->setText(QCoreApplication::translate("MainWindow", "Setze dpH-Wert f\303\274r pH-Sensor", nullptr));
-        label_16->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
         set_temp_button->setText(QCoreApplication::translate("MainWindow", "Setze Temperatur f\303\274r pH-Sensor", nullptr));
-        label_17->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
         allSet_pH->setText(QCoreApplication::translate("MainWindow", "OK", nullptr));
         quitButtonStartMain_3->setText(QCoreApplication::translate("MainWindow", "Quit", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_4), QCoreApplication::translate("MainWindow", "pH init", nullptr));

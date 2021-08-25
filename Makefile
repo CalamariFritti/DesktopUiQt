@@ -69,7 +69,8 @@ OBJECTS       = obj/mainwindow.o \
 		obj/moc_mainwindow.o \
 		obj/moc_dialog.o \
 		obj/moc_keyboard.o
-DIST          = /usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
+DIST          =
+		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/common/linux.conf \
 		/usr/lib/aarch64-linux-gnu/qt5/mkspecs/common/sanitize.conf \
