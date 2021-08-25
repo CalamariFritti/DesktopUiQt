@@ -1749,7 +1749,7 @@ void MainWindow::on_lineEdit_returnPressed()
     port_0.write(out);
 
     if(!input_buffer.contains("\n\r")){
-        serial_input = list_of_ports[index]->readAll();
+        serial_input = port_0.readAll();
         qDebug() << serial_input;
         input_buffer += QString::fromStdString(serial_input.toStdString());
         ui->textBrowser->setText(input_buffer);
