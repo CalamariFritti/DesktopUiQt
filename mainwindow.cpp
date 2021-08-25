@@ -224,7 +224,7 @@ void MainWindow::setupGraphs()
 void MainWindow::setupSensor485()
 {
 
-    port_0.setPortName("TODO_hw_address_for_RS485");
+    port_0.setPortName(port_0_system_location);
 
     port_0.open(QSerialPort::ReadWrite);
     qDebug() << "RS485 is open? :" << port_0.isOpen();
