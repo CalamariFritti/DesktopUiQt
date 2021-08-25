@@ -69,10 +69,8 @@ FORMS += \
     dialog.ui \
     keyboard.ui
 
-DISTFILES += \
-    img/2019-11-13_01-Favicon_VIVE-MedTech.png
+DISTFILES +=
 
 
 DESTDIR = $$(QMAKE_DESTIDIR)
-RESOURCES += \
-    ressources.qrc
+RESOURCES +=

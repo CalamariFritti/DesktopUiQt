@@ -172,10 +172,7 @@ private:
     //QString dir = QCoreApplication::applicationDirPath();
 
     //setting dir to fixed path for testing
-    QString dir = ""
-                  ""
-                  ""
-                  "/home/ftg/workspace/qtapp";
+    QString dir = "/home/ftg/workspace/qtapp";
 
     QTimer * timer_for_output;
 
