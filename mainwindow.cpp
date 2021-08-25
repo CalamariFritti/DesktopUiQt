@@ -69,7 +69,7 @@ void MainWindow::startStorageReader(){
     //byte to GB conversion
     qint64 storAvailable = storage.bytesAvailable()/1024/1024/1024;
     QString stor = QString::number(storAvailable) + " GB";
-    ui->memoryValueButton->setText(stor);
+    ui->stopMeassurementButton->setText(stor);
 }
 
 /********************************
