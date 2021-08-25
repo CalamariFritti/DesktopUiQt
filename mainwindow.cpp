@@ -1734,21 +1734,19 @@ void MainWindow::on_quitButtonSensor_3_clicked()
     close();
 }
 
-
+// in poweruser tab this line edit cann be used for manual command transmission
+// all commands go to port_0 as this is the RS485 default port
 void MainWindow::on_lineEdit_returnPressed()
 {
     QByteArray serial_input;
     QString input_buffer = "" ;
 
-    int index = ui->comboBox_2->currentIndex();
-
     QString input = ui->lineEdit->text() + "\r";;
-    qDebug() << input;
+    ui->textBrowser->setText("Folgender Befehl wird gesendet:\n" + input);
     QByteArray out = input.toLatin1();
     qDebug() << out;
 
-    list_of_ports[index]->write(out);
-
+    port_0.write(out);
 
     if(!input_buffer.contains("\n\r")){
         serial_input = list_of_ports[index]->readAll();
@@ -1756,11 +1754,10 @@ void MainWindow::on_lineEdit_returnPressed()
         input_buffer += QString::fromStdString(serial_input.toStdString());
         ui->textBrowser->setText(input_buffer);
     }else {
-        qDebug()<< "fertig_port_5: " << input_buffer_port_5;
-
         QString value = input_buffer;
         qDebug() << value;
-        ui->textBrowser->setText(value);
+        ui->textBrowser->append("Gelesene Daten von der Schnittstelle: \n");
+        ui->textBrowser->append(value);
         input_buffer = "";
     }
 }
