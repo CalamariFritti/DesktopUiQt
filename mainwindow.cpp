@@ -75,7 +75,7 @@ void MainWindow::startStorageReader(){
     //byte to GB conversion
     qint64 storAvailable = storage.bytesAvailable()/1024/1024/1024;
     QString stor = QString::number(storAvailable) + " GB";
-    ui->stopMeassurementButton->setText(stor);
+    ui->memoryValueButton->setText(stor);
 
 }
 
@@ -88,8 +88,6 @@ void MainWindow::valueVectorPreparation(){
         list_co2_2.append(0);
         list_ph_1.append(0);
         list_ph_2.append(0);
-
-
     }
 
 }

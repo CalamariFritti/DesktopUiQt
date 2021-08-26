@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.2
+** Created by: Qt User Interface Compiler version 5.14.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -55,7 +55,7 @@ public:
     QPushButton *pO2DisplayButton_2;
     QHBoxLayout *horizontalLayout_5;
     QPushButton *stopMeassurementButton;
-    QLabel *label_23;
+    QLabel *label_13;
     QPushButton *memoryValueButton;
     QWidget *start;
     QTabWidget *tabWidget_2;
@@ -328,19 +328,19 @@ public:
 
         horizontalLayout_5->addWidget(stopMeassurementButton);
 
-        label_23 = new QLabel(general);
-        label_23->setObjectName(QString::fromUtf8("label_23"));
-        label_23->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        label_13 = new QLabel(general);
+        label_13->setObjectName(QString::fromUtf8("label_13"));
+        QFont font;
+        font.setPointSize(25);
+        label_13->setFont(font);
+        label_13->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        horizontalLayout_5->addWidget(label_23);
+        horizontalLayout_5->addWidget(label_13);
 
         memoryValueButton = new QPushButton(general);
         memoryValueButton->setObjectName(QString::fromUtf8("memoryValueButton"));
         sizePolicy.setHeightForWidth(memoryValueButton->sizePolicy().hasHeightForWidth());
         memoryValueButton->setSizePolicy(sizePolicy);
-        QFont font;
-        font.setPointSize(25);
-        memoryValueButton->setFont(font);
 
         horizontalLayout_5->addWidget(memoryValueButton);
 
@@ -926,7 +926,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
         tabWidget_2->setCurrentIndex(4);
 
 
@@ -949,8 +949,9 @@ public:
         pCO2DisplayButton_2->setText(QCoreApplication::translate("MainWindow", "<none>", nullptr));
         pO2DisplayButton_2->setText(QCoreApplication::translate("MainWindow", "<none>", nullptr));
         stopMeassurementButton->setText(QCoreApplication::translate("MainWindow", "Messungen stoppen", nullptr));
-        label_23->setText(QCoreApplication::translate("MainWindow", "Verf\303\274gbarer Speicher:", nullptr));
-        memoryValueButton->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
+        label_13->setText(QCoreApplication::translate("MainWindow", "verf\303\274gbarer\n"
+"Speicherplatz:", nullptr));
+        memoryValueButton->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(general), QCoreApplication::translate("MainWindow", "Main", nullptr));
         sensor_1_init_label->setText(QCoreApplication::translate("MainWindow", "O2-Sensor nicht initialisiert", nullptr));
         initialize_sensor_0_button->setText(QCoreApplication::translate("MainWindow", "Initialisiere 1. O2-Sensor ", nullptr));

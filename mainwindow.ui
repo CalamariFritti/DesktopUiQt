@@ -243,9 +243,15 @@ background-color : transparent
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_23">
+           <widget class="QLabel" name="label_13">
+            <property name="font">
+             <font>
+              <pointsize>25</pointsize>
+             </font>
+            </property>
             <property name="text">
-             <string>Verfügbarer Speicher:</string>
+             <string>verfügbarer
+Speicherplatz:</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -260,13 +266,8 @@ background-color : transparent
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
-            <property name="font">
-             <font>
-              <pointsize>25</pointsize>
-             </font>
-            </property>
             <property name="text">
-             <string>-</string>
+             <string>PushButton</string>
             </property>
            </widget>
           </item>
@@ -291,7 +292,7 @@ background-color : transparent
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>4</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="tab">
          <attribute name="title">
@@ -486,8 +487,8 @@ font-size: 30;</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="2">
-           <widget class="QPushButton" name="memValButton">
+          <item row="3" column="2">
+           <widget class="QPushButton" name="butt_butt">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
               <horstretch>0</horstretch>
