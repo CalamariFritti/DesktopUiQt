@@ -23,7 +23,7 @@ void Dialog::on_checkBox_0_toggled(bool checked)
         ui->checkBox_0->setText("O2-Sensor 01 inaktiv");
     }
     //emit signal to connect in mainwindow.cpp
-    emit checkBox_0_toggled(checked);
+    emit checkBox_0_toggled(checked);Untitled Folder
 }
 //o2-Sensor_02
 void Dialog::on_checkBox_1_toggled(bool checked)
@@ -72,6 +72,7 @@ void Dialog::on_checkBox_5_toggled(bool checked)
         ui->checkBox_5->setText("CO2-Sensor 02 inaktiv");
     }
     emit checkBox_5_toggled(checked);
+
 }
 
 
