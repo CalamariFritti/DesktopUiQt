@@ -208,7 +208,10 @@ private:
     QDateTimeAxis *ph_axisX;
     QValueAxis *ph_axisY;
 
+// TODO: remove if lists (list_o2_1, etc.) work
     QVector<double> qv_o2_1, qv_o2_2, qv_co2_1, qv_co2_2, qv_ph_1, qv_ph_2;
+
+    QList<double> list_o2_1, list_o2_2, list_co2_1, list_co2_2, list_ph_1, list_ph_2;
 
     QDateTime start;
 

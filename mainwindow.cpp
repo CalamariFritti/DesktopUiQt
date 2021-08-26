@@ -82,12 +82,14 @@ void MainWindow::startStorageReader(){
 void MainWindow::valueVectorPreparation(){
 
     for( int i = 0; i < 2; i++){
-        qv_o2_1.append(0);
-        qv_o2_2.append(0);
-        qv_co2_1.append(0);
-        qv_co2_2.append(0);
-        qv_ph_1.append(0);
-        qv_ph_1.append(0);
+        list_o2_1.append(0);
+        list_o2_2.append(0);
+        list_co2_1.append(0);
+        list_co2_2.append(0);
+        list_ph_1.append(0);
+        list_ph_2.append(0);
+
+
     }
 
 }
@@ -1396,12 +1398,12 @@ void MainWindow::on_start_measurement_button_clicked()
     QObject::connect(timer_for_output, &QTimer::timeout, this, [this, filepath, raw_filepath]{
 
         qDebug() << ("----------------------------------------------");
-        qDebug() << qv_o2_1[qv_o2_1.size() - 1];
-        qDebug() << qv_o2_2[qv_o2_2.size() -1];
-        qDebug() << qv_co2_1[qv_co2_1.size() -1];
-        qDebug() << qv_co2_2[qv_co2_2.size() -1];
-        qDebug() << qv_ph_1[qv_ph_1.size() -1];
-        qDebug() << qv_ph_1[qv_ph_1.size() -1];
+        qDebug() << list_o2_1[list_o2_1.size() - 1];
+        qDebug() << list_o2_2[list_o2_2.size() -1];
+        qDebug() << list_co2_1[list_co2_1.size() -1];
+        qDebug() << list_co2_2[list_co2_2.size() -1];
+        qDebug() << list_ph_1[list_ph_1.size() -1];
+        qDebug() << list_ph_2[list_ph_2.size() -1];
         qDebug() << ("----------------------------------------------");
         set_main_output_buttons();
         write_to_file(filepath);
@@ -1420,19 +1422,19 @@ void MainWindow::set_main_output_buttons()
     // o2 values are rounded -> no decimals
     // co2 values are rounded -> no decimals
     // ph values are 'rounded' to two decimals
-    ui->pO2DisplayButton->setText(QString::number(round(qv_o2_1[qv_o2_1.size() -1])));
-    ui->pO2DisplayButton_2->setText(QString::number(round(qv_o2_2[qv_o2_2.size() -1])));
-    ui->pCO2DisplayButton->setText(QString::number(round(qv_co2_1[qv_co2_1.size() -1])));
-    ui->pCO2DisplayButton_2->setText(QString::number(round(qv_co2_2[qv_co2_2.size() -1])));
-    int ph_int_1 =(int)(qv_ph_1[qv_ph_1.size() -1] * 100);
+    ui->pO2DisplayButton->setText(QString::number(round(list_o2_1[list_o2_1.size() -1])));
+    ui->pO2DisplayButton_2->setText(QString::number(round(list_o2_2[list_o2_2.size() -1])));
+    ui->pCO2DisplayButton->setText(QString::number(round(list_co2_1[list_co2_1.size() -1])));
+    ui->pCO2DisplayButton_2->setText(QString::number(round(list_co2_2[list_co2_2.size() -1])));
+    int ph_int_1 =(int)(list_ph_1[list_ph_1.size() -1] * 100);
     double ph_dou_1 = (double)ph_int_1;
     ph_dou_1 = ph_dou_1 / 100;
-    ui->pHDisplayButton->setText(QString::number(qv_ph_1[qv_ph_1.size() -1]));
+    ui->pHDisplayButton->setText(QString::number(list_ph_1[list_ph_1.size() -1]));
 
-    int ph_int_2 =(int)(qv_ph_2[qv_ph_2.size() -1] * 100);
+    int ph_int_2 =(int)(list_ph_2[list_ph_2.size() -1] * 100);
     double ph_dou_2 = (double)ph_int_2;
     ph_dou_2 = ph_dou_2 / 100;
-    ui->pHDisplayButton_2->setText(QString::number(qv_ph_2[qv_ph_2.size() -1]));
+    ui->pHDisplayButton_2->setText(QString::number(list_ph_2[list_ph_2.size() -1]));
 }
 
 /**************************************************************************
@@ -1446,12 +1448,12 @@ void MainWindow::write_to_file(QString filepath)
     file->open(QFile::WriteOnly | QFile::Append | QFile::Text);
     QTextStream out(file);
     out << get_timeStamp() << ",";
-    out << qv_o2_1[qv_o2_1.size() -1] << ",";
-    out << qv_o2_2[qv_o2_2.size() -1] << ",";
-    out << qv_co2_1[qv_co2_1.size() -1] << ",";
-    out << qv_co2_2[qv_co2_2.size() -1] << ",";
-    out << qv_ph_1[qv_ph_1.size() -1] << ",";
-    out << qv_ph_2[qv_ph_2.size() -1] << ",";
+    out << list_o2_1[list_o2_1.size() -1] << ",";
+    out << list_o2_2[list_o2_2.size() -1] << ",";
+    out << list_co2_1[list_co2_1.size() -1] << ",";
+    out << list_co2_2[list_co2_2.size() -1] << ",";
+    out << list_ph_1[list_ph_1.size() -1] << ",";
+    out << list_ph_2[list_ph_2.size() -1] << ",";
     out << "\n";
     qDebug() << "write_to_file is running";
     file->close();
@@ -1491,9 +1493,9 @@ void MainWindow::append_to_plotSeries()
     axisX->setRange(start, now.addSecs(2));
     co2_axisX->setRange(start, now.addSecs(2));
     ph_axisX->setRange(start, now.addSecs(2));
-    o2_series->append(now.toMSecsSinceEpoch(), qv_o2_1[qv_o2_1.size() -1]);
-    co2_series->append(now.toMSecsSinceEpoch(), qv_co2_1[qv_o2_1.size() -1]);
-    ph_series->append(now.toMSecsSinceEpoch(), qv_ph_1[qv_o2_1.size() -1]);
+    o2_series->append(now.toMSecsSinceEpoch(), list_o2_1[list_o2_1.size() -1]);
+    co2_series->append(now.toMSecsSinceEpoch(), list_co2_1[list_co2_1.size() -1]);
+    ph_series->append(now.toMSecsSinceEpoch(), list_ph_1[list_ph_1.size() -1]);
 }
 
 /***************************************************************
@@ -1528,7 +1530,7 @@ void MainWindow::get_sensor_value_port_0()
         value.insert(4, ".");
         qDebug() << value;
         qDebug() << value.toDouble();
-        qv_ph_1.append(value.toDouble());
+        list_ph_1.append(value.toDouble());
         input_buffer_port_0 = "";
         if(raw_ph_1.size() > 1000){
             raw_ph_1.removeFirst();
@@ -1559,7 +1561,7 @@ void MainWindow::get_sensor_value_port_1()
         value.insert(4, ".");
         qDebug() << value;
         qDebug() << value.toDouble();
-        qv_co2_2.append(value.toDouble());
+        list_co2_2.append(value.toDouble());
         input_buffer_port_1 = "";
         if(raw_co2_2.size() > 1000){
             raw_co2_2.removeFirst();
@@ -1589,7 +1591,7 @@ void MainWindow::get_sensor_value_port_2()
         value.insert(4, ".");
         qDebug() << value;
         qDebug() << value.toDouble();
-        qv_ph_2.append(value.toDouble());
+        list_ph_2.append(value.toDouble());
         input_buffer_port_2 = "";
         if(raw_ph_2.size() > 1000){
             raw_ph_2.removeFirst();
@@ -1618,7 +1620,7 @@ void MainWindow::get_sensor_value_port_3()
         value.insert(4, ".");
         qDebug() << value;
         qDebug() << value.toDouble();
-        qv_o2_1.append(value.toDouble());
+        list_o2_1.append(value.toDouble());
         input_buffer_port_3 = "";
         if(raw_o2_1.size() > 1000){
             raw_o2_1.removeFirst();
@@ -1646,7 +1648,7 @@ void MainWindow::get_sensor_value_port_4()
         value.insert(4, ".");
         qDebug() << value;
         qDebug() << value.toDouble();
-        qv_co2_1.append(value.toDouble());
+        list_co2_1.append(value.toDouble());
         input_buffer_port_4 = "";
         if(raw_co2_1.size() > 1000){
             raw_co2_1.removeFirst();
@@ -1675,7 +1677,7 @@ void MainWindow::get_sensor_value_port_5()
         value.insert(4, ".");
         qDebug() << value;
         qDebug() << value.toDouble();
-        qv_o2_2.append(value.toDouble());
+        list_o2_2.append(value.toDouble());
         input_buffer_port_5 = "";
     }
 }
