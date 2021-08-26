@@ -19,6 +19,9 @@ properties:
   props:
     common:
       extrapackages: libqt5widgets5
+      devpackages: >-
+        qtdeclarative5-dev:#%platform.debian-arch%#
+        libegl-dev:#%platform.debian-arch%# libgl-dev:#%platform.debian-arch%#
     debug: {}
     release: {}
 extversion: 1.3.0

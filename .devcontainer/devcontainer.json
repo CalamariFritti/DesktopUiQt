@@ -2,8 +2,9 @@
     "name": "torizon_desktopuiqt",
     "dockerFile": "Dockerfile",
     "extensions": [
-        "ms-vscode.cpptools"
-    ],
+		"ms-vscode.cpptools",
+		"toradex.torizon"
+	],
     "containerEnv": {
         "AR": "aarch64-linux-gnu-ar",
         "AS": "aarch64-linux-gnu-as",
