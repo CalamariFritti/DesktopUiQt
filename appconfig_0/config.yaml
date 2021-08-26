@@ -17,7 +17,7 @@ images:
 imagetags:
     debug: desktopuiqt_arm64v8-qt5-vivante-no-ssh_bullseye_debug_10940dc7-a3ba-4dbb-8b0c-70acbfe4839f
     release: desktopuiqt_arm64v8-qt5-vivante-no-ssh_bullseye_release_10940dc7-a3ba-4dbb-8b0c-70acbfe4839f
-modificationdate: '2021-08-25T11:39:38.865713'
+modificationdate: '2021-08-26T14:04:25.725685'
 networks:
     common: []
     debug: []

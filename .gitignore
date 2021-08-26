@@ -1,1 +1,4 @@
+# Qt project file
+*.pro.use
+
 appconfig_*/work
